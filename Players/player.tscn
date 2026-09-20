@@ -387,7 +387,7 @@ material = ExtResource("1_8g4q3")
 position = Vector2(2.6226e-06, 1.43051e-06)
 scale = Vector2(2, 1.768)
 sprite_frames = SubResource("SpriteFrames_x7o8n")
-animation = &"default_artifact"
+animation = &"walk_forward"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 top_level = true

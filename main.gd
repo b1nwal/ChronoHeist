@@ -19,7 +19,7 @@ extends Node2D
 
 var playerPast_scene := preload("res://Players/playerPast.tscn")
 var artifact_scene := preload("res://gameElements/artifact.tscn")
-var portal_texture := preload("res://assets/portals/portal1.png")
+var portal_texture := preload("res://assets/portals/Portal.tscn")
 var portal_light_texture := preload("res://assets/Lights/PointLightGradient.tres")
 
 
@@ -156,11 +156,11 @@ func place_portal():
 	portal_light.texture = portal_light_texture
 	portal_light.scale = Vector2(3.0, 3.0)
 	portal_sprite = Node2D.new()
-	portal_visual = Sprite2D.new()
+	portal_visual = portal_texture.instantiate()
+	portal_visual.play()
 	portal_sound = FmodEventEmitter2D.new()
 	portal_sound.event_guid = "{80400fb2-5f5e-42e2-8ab0-655f1d08d1d8}"
 	portal_sound.autoplay = true
-	portal_visual.texture = portal_texture
 	portal_visual.add_child(portal_light)
 	portal_sprite.add_child(portal_visual)
 	portal_sprite.add_child(portal_visual)
