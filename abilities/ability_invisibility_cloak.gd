@@ -7,4 +7,10 @@ func _init():
 	uses = 2
 
 func _on_cast(player: Node):
-	print("invisibility cloak cast")
+	player.set_invincible(true)
+	player.hide()
+	await player.get_tree().create_timer(3.0).timeout
+	player.set_invincible(false)
+	player.show()
+	
+	

@@ -143,6 +143,10 @@ func render_player(v_vec):
 
 func set_invincible(boo):
 	invincible = boo
+	
+func set_opacity(op: float):
+	print("set opacity")
+	animated_sprite.modulate = Color(1.0, 1.0, 1.0, op)
 
 func handle_flashlight(delta: float) -> void:
 	
