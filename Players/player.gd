@@ -9,6 +9,8 @@ extends CharacterBody2D
 @onready var soundManager = $playerSounds
 @onready var particles = $GPUParticles2D
 
+var ability: Ability = AbilityInvisiblityCloak.new()
+
 signal score_earned(amount)
 signal exit_point_reached()
 signal spotted(observer, target)
@@ -53,11 +55,17 @@ func _unhandled_input(event):
 	if event.is_action_pressed("interact"):
 		if !holding_item:
 			interact_with_closest_artifacts()
+			
+	if event.is_action_pressed("ability1"):
+		ability.cast(self)
 
 func _obtain_v_vec():
 	var a = Input.get_vector("move_left","move_right","move_up","move_down")
 	record.append([a,position])
 	return [a,position]
+
+func _process(delta: float) -> void:
+	ability.update(delta)
 
 func _physics_process(delta: float) -> void:
 	var v_vec = _obtain_v_vec()[0]
@@ -135,6 +143,10 @@ func render_player(v_vec):
 
 func set_invincible(boo):
 	invincible = boo
+	
+func set_opacity(op: float):
+	print("set opacity")
+	animated_sprite.modulate = Color(1.0, 1.0, 1.0, op)
 
 func handle_flashlight(delta: float) -> void:
 	
