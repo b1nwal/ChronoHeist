@@ -93,11 +93,14 @@ func update_score(score):
 func update_objective(objective):
 	if objective == 1:
 		$ObjectiveLabel2.hide()
-		$ObjectiveLabel.text = "Steal an artifact and escape."
+		$ObjectiveLabel.text = "Steal an artifact and escape through the portal."
 	elif objective == 2:
-		$ObjectiveLabel.text = "Steal an artifact and escape."
+		$ObjectiveLabel.text = "Steal an artifact and escape through the portal."
 		$ObjectiveLabel2.show()
 		$ObjectiveLabel2.text = "Avoid your past selves."
+		
+		
+		
 	else:
 		$ObjectiveLabel.text = "the objective label is cooked what did you do"
 
