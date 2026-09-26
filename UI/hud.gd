@@ -9,32 +9,26 @@ extends CanvasLayer
 @onready var waypointTL: Sprite2D = $Waypoint/topleft
 @onready var waypointTR: Sprite2D = $Waypoint/topright
 @onready var waypointT: Sprite2D = $Waypoint/top
+@onready var CountDownLabel: Label = $CountDownLabel
+@onready var TimeLabel: Label = $TimeLabel
+@onready var ScoreLabel: Label = $ScoreLabel
+@onready var RestartLabel: Label = $RestartLabel
+@onready var ObjectiveLabel: Label = $ObjectiveLabel
+@onready var ObjectiveLabel2: Label = $ObjectiveLabel2
 
-
-#@onready var viewport_size = get_viewport().size
-#const top = WAYPOINT_MARGIN
-#const left = WAYPOINT_MARGIN
-#@onready var right = viewport_size.x - WAYPOINT_MARGIN + 3
-#@onready var bottom = viewport_size.y - WAYPOINT_MARGIN + 2
-const WAYPOINT_MARGIN := 96.0
+const WAYPOINT_MARGIN := 130.0
 var waypoint_target = null
 
-#@onready var max_dimension = max(viewport_size.x, viewport_size.y)
-
-func _process(delta: float) -> void:
-	if not $CountDownLabel.visible:
-		_waypointer()
-	else:
-		waypoint.hide()
+func _process(delta: float) -> void: 
+	_waypointer()
 
 func _waypointer():
-	if waypoint_target == null:
+	if waypoint_target == null or CountDownLabel.visible:
 		waypoint.hide()
 		return
 	
 	var screen_pos: Vector2 = get_viewport().get_canvas_transform() * waypoint_target
 	var safe := get_viewport().get_visible_rect().grow(-WAYPOINT_MARGIN)
-	#var center = safe.get_center()
 	 
 	if safe.has_point(screen_pos):
 		waypoint.hide()
@@ -59,50 +53,44 @@ func _waypointer():
 	elif on_right:               waypointR.show()
 	elif on_top:                 waypointT.show()
 	else:                        waypointB.show()
-	#print(waypoint.position)
-	#print(right)
-	#print(bottom)
 
 func update_ready(message):
-	$CountDownLabel.text = message
+	CountDownLabel.text = message
 	if message.contains("Space"):
-		$CountDownLabel.add_theme_font_size_override("font_size", 100)
-		$CountDownLabel.add_theme_color_override("font_color", Color(0, 0, 0))
-		$CountDownLabel.add_theme_color_override("font_outline_color", Color(255, 255, 255))
+		CountDownLabel.add_theme_font_size_override("font_size", 100)
+		CountDownLabel.add_theme_color_override("font_color", Color(0, 0, 0))
+		CountDownLabel.add_theme_color_override("font_outline_color", Color(255, 255, 255))
 	elif message.contains("Avoid"):
-		$CountDownLabel.add_theme_font_size_override("font_size", 85)
-		$CountDownLabel.add_theme_color_override("font_color", Color(255, 0, 0))
-		$CountDownLabel.add_theme_color_override("font_outline_color", Color(255, 255, 255))
+		CountDownLabel.add_theme_font_size_override("font_size", 85)
+		CountDownLabel.add_theme_color_override("font_color", Color(255, 0, 0))
+		CountDownLabel.add_theme_color_override("font_outline_color", Color(255, 255, 255))
 	else:
-		$CountDownLabel.add_theme_font_size_override("font_size", 75)
-		$CountDownLabel.add_theme_color_override("font_color", Color(255, 255, 255))
-		$CountDownLabel.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+		CountDownLabel.add_theme_font_size_override("font_size", 75)
+		CountDownLabel.add_theme_color_override("font_color", Color(255, 255, 255))
+		CountDownLabel.add_theme_color_override("font_outline_color", Color(0, 0, 0))
 
 func update_timer(time):
-	$TimeLabel.text = str(time)
+	TimeLabel.text = str(time)
 	if time <= 10:
-		$TimeLabel.add_theme_color_override("font_color", Color(255, 0, 0))
-		$TimeLabel.add_theme_color_override("font_outline_color", Color(255, 255, 255))
+		TimeLabel.add_theme_color_override("font_color", Color(255, 0, 0))
+		TimeLabel.add_theme_color_override("font_outline_color", Color(255, 255, 255))
 	else:
-		$TimeLabel.add_theme_color_override("font_color", Color(255, 255, 255))
-		$TimeLabel.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+		TimeLabel.add_theme_color_override("font_color", Color(255, 255, 255))
+		TimeLabel.add_theme_color_override("font_outline_color", Color(0, 0, 0))
 
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	ScoreLabel.text = str(score)
 
 func update_objective(objective):
 	if objective == 1:
-		$ObjectiveLabel2.hide()
-		$ObjectiveLabel.text = "Steal an artifact and escape through the portal."
+		ObjectiveLabel2.hide()
+		ObjectiveLabel.text = "Steal an artifact and escape through the portal."
 	elif objective == 2:
-		$ObjectiveLabel.text = "Steal an artifact and escape through the portal."
-		$ObjectiveLabel2.show()
-		$ObjectiveLabel2.text = "Avoid your past selves."
-		
-		
-		
+		ObjectiveLabel.text = "Steal an artifact and escape through the portal."
+		ObjectiveLabel2.show()
+		ObjectiveLabel2.text = "Avoid your past selves."
 	else:
-		$ObjectiveLabel.text = "the objective label is cooked what did you do"
+		ObjectiveLabel.text = "the objective label is cooked what did you do"
 
 func set_waypoint(pos) -> void:
 	waypoint_target = pos

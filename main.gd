@@ -165,7 +165,11 @@ func place_portal():
 	portal_sprite.add_child(portal_visual)
 	portal_sprite.add_child(portal_visual)
 	add_child(portal_sprite)
-	start_float_on_portal() 
+	var t := create_tween().set_loops()
+	t.tween_property(portal_visual, "position", Vector2(0, -25), 1.5) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	t.tween_property(portal_visual, "position", Vector2(0, 0), 1.5) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 func add_artifact(pos: Vector2, sprite_name: String, points=200) -> void:
 	var artifact := artifact_scene.instantiate()
@@ -210,13 +214,6 @@ func remove_ghosts() -> void:
 				remove_child(ghost)
 			ghost.queue_free()
 	past_players.clear()
-
-func start_float_on_portal() -> void:
-	var t := create_tween().set_loops()
-	t.tween_property(portal_visual, "position", Vector2(0, -25), 1.5) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	t.tween_property(portal_visual, "position", Vector2(0, 0), 1.5) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 func frame_whole_map() -> void:
 	var cam: Camera2D = $player/Camera2D

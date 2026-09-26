@@ -17,8 +17,7 @@
 script = ExtResource("1_37p78")
 
 [node name="Waypoint" type="Marker2D" parent="."]
-visible = false
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 
 [node name="bottomleft" type="Sprite2D" parent="Waypoint"]
 texture = ExtResource("5_rnl6m")
