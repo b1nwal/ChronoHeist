@@ -361,6 +361,8 @@ z_index = 8
 collision_mask = 9
 metadata/speed = 400
 metadata/_edit_group_ = true
+metadata/Mass = 100
+metadata/Friction = 0.2
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.67451)

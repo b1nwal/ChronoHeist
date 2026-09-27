@@ -2,7 +2,11 @@
 class_name Player 
 extends CharacterBody2D
 
+const PIXELS_PER_METRE = 100
+
 @onready var speed = get_meta("speed")
+@onready var friction = get_meta("Friction")
+@onready var mass = get_meta("Mass")
 @onready var animated_sprite = $Sprite2D
 @onready var item_sprite = $ItemSprite2D
 @onready var interaction_range = $InteractionRange
@@ -33,6 +37,13 @@ var spot_timer := 0.0
 var spot_fired := false
 
 ## TWEENING/MOVEMENT
+var lin_drag = 9
+var qua_drag = .07
+var f_applied = 0
+var f_max = 20000
+var v_mag = 0
+var v_vec = Vector2.RIGHT
+var k = 4.6 # this one looks nice on desmos
 var ramp_up = 300
 var ramp_down = 40
 var facing := Vector2.RIGHT
@@ -60,9 +71,9 @@ func _obtain_v_vec():
 	return [a,position]
 
 func _physics_process(delta: float) -> void:
-	var v_vec = _obtain_v_vec()[0]
+	var i_vec = _obtain_v_vec()[0]
 	position = _obtain_v_vec()[1]
-	handle_movement(v_vec)
+	handle_movement(i_vec, delta)
 	handle_flashlight(delta)
 
 	# check if distance to exit is < 64 px
@@ -71,34 +82,29 @@ func _physics_process(delta: float) -> void:
 			on_exit_point_reached()
 
 	move_and_slide()
-	render_player(v_vec)
+	render_player(i_vec)
 	
-func handle_movement(v_vec):	
-	
-	
-
-	
-		 
-	var e = angle_difference(v_vec.angle(), facing.angle())
-
-	if not v_vec == Vector2.ZERO and not running:
-		running = true
-		run_start = Time.get_ticks_msec()
-	if v_vec == Vector2.ZERO and running:
-		running = false
-		stop_start = Time.get_ticks_msec()
-		animated_sprite.stop()
-	if running:
-		if angular_acceleration < 0.0174533:
-			e = angle_difference(v_vec.angle() + f_A*sin((Time.get_ticks_msec() - run_start)/100), facing.angle())
-		angular_acceleration = f_stiffness*e - f_damping*angular_velocity
-		angular_velocity += angular_acceleration
-		
-		facing = facing.rotated(-angular_velocity)
-		velocity = v_vec * v_tween(ramp_up, Time.get_ticks_msec() - run_start)
-	if not running and not velocity == Vector2.ZERO:
-		velocity = velocity.normalized() * (speed - v_tween(ramp_down * (velocity.length()/speed), Time.get_ticks_msec() - stop_start))
-		
+func handle_movement(i_vec, delta):
+	var e = angle_difference(i_vec.angle(), facing.angle()) # placeholder
+	if not i_vec == Vector2.ZERO: # if player is running
+		v_vec = i_vec
+		f_applied += k*(f_max - f_applied) * delta # implement F(t) = Fmax(1-e^(-kt)) as a differential equation approximated with euler's method for a per-timestep solution that does not require statefulness
+	if i_vec == Vector2.ZERO: # player is not moving
+		f_applied = 0
+		if abs(v_mag) < 2:
+			v_mag = 0
+	var force = f_applied - lin_drag*v_mag - qua_drag*v_mag**2 
+	var acceleration = (force * PIXELS_PER_METRE) / mass 
+	var v_old = v_mag
+	v_mag += acceleration * delta
+	velocity = v_vec * v_mag
+	print(v_mag)
+	# if angular_acceleration < 0.0174533:
+		# e = angle_difference(v_vec.angle() + f_A*sin((Time.get_ticks_msec() - run_start)/100), facing.angle())
+	# angular_acceleration = f_stiffness*e - f_damping*angular_velocity
+	# angular_velocity += angular_acceleration
+	# facing = facing.rotated(-angular_velocity)
+			
 func render_player(v_vec):
 	if v_vec[0] > 0:
 		if particles:
@@ -159,12 +165,6 @@ func handle_flashlight(delta: float) -> void:
 			spot_timer = max(0.0, spot_timer - delta * 2.0)
 			if spot_timer == 0.0:
 				spot_fired = false
-	
-func v_tween(ramp_time: int, x: float) -> float:
-	var m = 1
-	if x < ramp_time:
-		m = (3*((x/ramp_time)**2) - 2*((x/ramp_time)**3))
-	return m * speed
 
 # on round start
 func start(pos: Vector2):

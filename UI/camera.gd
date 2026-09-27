@@ -2,7 +2,7 @@ extends Camera2D
 
 @onready var target = get_parent()
 var lerp_speed := 5.0
-var lead_distance := 100.0
+var lead_distance := 100
 
 func _process(delta: float) -> void:
 	if not target:
