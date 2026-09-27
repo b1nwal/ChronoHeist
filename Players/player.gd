@@ -34,7 +34,7 @@ var spot_fired := false
 
 ## TWEENING/MOVEMENT
 var ramp_up = 300
-var ramp_down = 410
+var ramp_down = 40
 var facing := Vector2.RIGHT
 var f_stiffness = 0.02352
 var f_damping = 0.154
