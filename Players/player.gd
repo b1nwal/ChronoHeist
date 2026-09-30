@@ -43,6 +43,7 @@ var f_applied = 0
 var f_max = 20000
 var v_mag = 0
 var v_vec = Vector2.RIGHT
+var i_vec = Vector2.RIGHT
 var k = 4.6 # this one looks nice on desmos
 var ramp_up = 300
 var ramp_down = 40
@@ -71,7 +72,7 @@ func _obtain_v_vec():
 	return [a,position]
 
 func _physics_process(delta: float) -> void:
-	var i_vec = _obtain_v_vec()[0]
+	i_vec = _obtain_v_vec()[0]
 	position = _obtain_v_vec()[1]
 	handle_movement(i_vec, delta)
 	handle_flashlight(delta)
@@ -85,25 +86,23 @@ func _physics_process(delta: float) -> void:
 	render_player(i_vec)
 	
 func handle_movement(i_vec, delta):
-	var e = angle_difference(i_vec.angle(), facing.angle()) # placeholder
+	var e = angle_difference(i_vec.angle(), facing.angle())
 	if not i_vec == Vector2.ZERO: # if player is running
-		v_vec = i_vec
+		v_vec = i_vec # v_vec is always the last direction the player was moving in
 		f_applied += k*(f_max - f_applied) * delta # implement F(t) = Fmax(1-e^(-kt)) as a differential equation approximated with euler's method for a per-timestep solution that does not require statefulness
 	if i_vec == Vector2.ZERO: # player is not moving
-		f_applied = 0
-		if abs(v_mag) < 2:
-			v_mag = 0
-	var force = f_applied - lin_drag*v_mag - qua_drag*v_mag**2 
-	var acceleration = (force * PIXELS_PER_METRE) / mass 
-	var v_old = v_mag
-	v_mag += acceleration * delta
-	velocity = v_vec * v_mag
-	print(v_mag)
-	# if angular_acceleration < 0.0174533:
-		# e = angle_difference(v_vec.angle() + f_A*sin((Time.get_ticks_msec() - run_start)/100), facing.angle())
-	# angular_acceleration = f_stiffness*e - f_damping*angular_velocity
-	# angular_velocity += angular_acceleration
-	# facing = facing.rotated(-angular_velocity)
+		f_applied = 0 # do not apply force to character
+		if abs(v_mag) < 2: # clamps velocity down when it gets really low
+			v_mag = 0 # otherwise it asymptotically goes to 0 and never reaches it
+	var force = f_applied - lin_drag*v_mag - qua_drag*v_mag**2 # Fnet = Fa - Drag
+	var acceleration = (force * PIXELS_PER_METRE) / mass # F = ma -> a = F/m
+	v_mag += acceleration * delta # integrate acceleration into velocity
+	velocity = v_vec * v_mag # velocity vector
+	if angular_acceleration < 0.0174533:
+		e = angle_difference(v_vec.angle() + f_A*sin((Time.get_ticks_msec())/100), facing.angle())
+	angular_acceleration = f_stiffness*e - f_damping*angular_velocity
+	angular_velocity += angular_acceleration
+	facing = facing.rotated(-angular_velocity)
 			
 func render_player(v_vec):
 	if v_vec[0] > 0:
