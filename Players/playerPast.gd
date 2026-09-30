@@ -1,10 +1,8 @@
 extends Player
 
 var record_index = 0
-var v_vec
 
 func _ready() -> void:
-	#print(speed)
 	get_tree().current_scene.connect("rewind",_on_rewind)
 	
 func _on_rewind() -> void:
