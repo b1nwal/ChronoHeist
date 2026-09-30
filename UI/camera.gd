@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 	if not target:
 		return
 
-	var vel = target.velocity  # or whatever your player uses
+	var vel = target.i_vec  # or whatever your player uses
 	var forward = vel.normalized()
 	var target_pos = target.global_position + forward * lead_distance
 
