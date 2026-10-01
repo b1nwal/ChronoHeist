@@ -19,7 +19,7 @@ extends Node2D
 
 var playerPast_scene := preload("res://Players/playerPast.tscn")
 var artifact_scene := preload("res://gameElements/artifact.tscn")
-var portal_texture := preload("res://assets/portals/Portal.tscn")
+var portal_texture := preload("res://gameElements/Portal.tscn")
 var portal_light_texture := preload("res://assets/Lights/PointLightGradient.tres")
 
 
