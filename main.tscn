@@ -1760,6 +1760,7 @@ occluder = SubResource("OccluderPolygon2D_074og")
 visible = false
 occluder = SubResource("OccluderPolygon2D_1u8w0")
 
+[connection signal="proximal_to_artifact" from="player" to="HUD" method="_on_player_proximal_to_artifact"]
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="CountDown" to="." method="_on_count_down_timeout"]
 [connection signal="timeout" from="gameovertimer" to="." method="_on_gameovertimer_timeout"]

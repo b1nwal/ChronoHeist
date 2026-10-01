@@ -106,3 +106,6 @@ func update_objective(objective):
 
 func set_waypoint(pos) -> void:
 	waypoint_target = pos
+	
+func _on_player_proximal_to_artifact(truth) -> void:
+	$E_Indicator.visible = truth;
