@@ -1,17 +1,20 @@
-
 class_name Player 
 extends CharacterBody2D
 
+signal score_earned(amount)
+signal exit_point_reached()
+signal spotted(observer, target)
+signal proximal_to_artifact(truth)
+
+const PIXELS_PER_METRE = 100
+
 @onready var speed = get_meta("speed")
+@onready var mass = get_meta("Mass")
 @onready var animated_sprite = $Sprite2D
 @onready var item_sprite = $ItemSprite2D
 @onready var interaction_range = $InteractionRange
 @onready var soundManager = $playerSounds
 @onready var particles = $GPUParticles2D
-
-signal score_earned(amount)
-signal exit_point_reached()
-signal spotted(observer, target)
 
 ## GAME STATES
 var gameoverseq := false
@@ -33,8 +36,16 @@ var spot_timer := 0.0
 var spot_fired := false
 
 ## TWEENING/MOVEMENT
+var lin_drag = 9
+var qua_drag = .07
+var f_applied = 0
+var f_max = 20000
+var v_mag = 0
+var v_vec = Vector2.RIGHT
+var i_vec = Vector2.RIGHT
+var k = 4.6 # this one looks nice on desmos
 var ramp_up = 300
-var ramp_down = 410
+var ramp_down = 40
 var facing := Vector2.RIGHT
 var f_stiffness = 0.02352
 var f_damping = 0.154
@@ -42,6 +53,7 @@ var f_A = .07
 var angular_velocity = 0
 var angular_acceleration = 0
 
+var artifacts = []
 
 func gameoverbruh():
 	gameoverseq = true
@@ -59,46 +71,48 @@ func _obtain_v_vec():
 	record.append([a,position])
 	return [a,position]
 
-func _physics_process(delta: float) -> void:
-	var v_vec = _obtain_v_vec()[0]
-	position = _obtain_v_vec()[1]
-	handle_movement(v_vec)
-	handle_flashlight(delta)
+func _process(_delta: float) -> void:
+	pass
 
+func _physics_process(delta: float) -> void:
+	artifacts = artifact_inrange()
+	i_vec = _obtain_v_vec()[0]
+	position = _obtain_v_vec()[1]
+	handle_movement(i_vec, delta)
+	handle_flashlight(delta)
 	# check if distance to exit is < 64 px
 	if exit_point:
 		if global_position.distance_squared_to(exit_point) < 4096:
 			on_exit_point_reached()
 
 	move_and_slide()
-	render_player(v_vec)
+	render_player(i_vec)
 	
-func handle_movement(v_vec):	
-	
-	
-
-	
-		 
-	var e = angle_difference(v_vec.angle(), facing.angle())
-
-	if not v_vec == Vector2.ZERO and not running:
-		running = true
-		run_start = Time.get_ticks_msec()
-	if v_vec == Vector2.ZERO and running:
-		running = false
-		stop_start = Time.get_ticks_msec()
-		animated_sprite.stop()
-	if running:
+	if self is not PastPlayer:
+		if artifacts.size() > 0 and not holding_item:
+			proximal_to_artifact.emit(true)
+		else:
+			proximal_to_artifact.emit(false)
+			
+func handle_movement(i_vec, delta):
+	var e = angle_difference(i_vec.angle(), facing.angle())
+	if not i_vec == Vector2.ZERO: # if player is running
 		if angular_acceleration < 0.0174533:
-			e = angle_difference(v_vec.angle() + f_A*sin((Time.get_ticks_msec() - run_start)/100), facing.angle())
+			e = angle_difference(v_vec.angle() + f_A*sin((Time.get_ticks_msec())/100), facing.angle())
 		angular_acceleration = f_stiffness*e - f_damping*angular_velocity
 		angular_velocity += angular_acceleration
-		
 		facing = facing.rotated(-angular_velocity)
-		velocity = v_vec * v_tween(ramp_up, Time.get_ticks_msec() - run_start)
-	if not running and not velocity == Vector2.ZERO:
-		velocity = velocity.normalized() * (speed - v_tween(ramp_down * (velocity.length()/speed), Time.get_ticks_msec() - stop_start))
-		
+		v_vec = i_vec # v_vec is always the last direction the player was moving in
+		f_applied += k*(f_max - f_applied) * delta # implement F(t) = Fmax(1-e^(-kt)) as a differential equation approximated with euler's method for a per-timestep solution that does not require statefulness
+	if i_vec == Vector2.ZERO: # player is not moving
+		f_applied = 0 # do not apply force to character
+		if abs(v_mag) < 2: # clamps velocity down when it gets really low
+			v_mag = 0 # otherwise it asymptotically goes to 0 and never reaches it
+	var force = f_applied - lin_drag*v_mag - qua_drag*v_mag**2 # Fnet = Fa - Drag
+	var acceleration = (force * PIXELS_PER_METRE) / mass # F = ma -> a = F/m
+	v_mag += acceleration * delta # integrate acceleration into velocity
+	velocity = v_vec * v_mag # velocity vector
+	
 func render_player(v_vec):
 	if v_vec[0] > 0:
 		if particles:
@@ -159,12 +173,6 @@ func handle_flashlight(delta: float) -> void:
 			spot_timer = max(0.0, spot_timer - delta * 2.0)
 			if spot_timer == 0.0:
 				spot_fired = false
-	
-func v_tween(ramp_time: int, x: float) -> float:
-	var m = 1
-	if x < ramp_time:
-		m = (3*((x/ramp_time)**2) - 2*((x/ramp_time)**3))
-	return m * speed
 
 # on round start
 func start(pos: Vector2):
@@ -190,27 +198,24 @@ func on_exit_point_reached():
 	
 	exit_point_reached.emit()
 
-# interact with all the closest artifacts
-func interact_with_closest_artifacts():
+func artifact_inrange() -> Array[Node2D]:
 	var nodes_in_range: Array[Node2D] = interaction_range.get_overlapping_bodies()
-	
-	var artifacts = []
-	
+	var artifacts: Array[Node2D] = []
 	for body in interaction_range.get_overlapping_bodies():
 		var parent = body.get_parent()
-
 		if parent is Artifact:
 			artifacts.append(parent)
-	
 	# sort by proximity!
 	artifacts.sort_custom(func(a,b):
 		return global_position.distance_squared_to(a.global_position) < global_position.distance_squared_to(b.global_position)
 	)
-	
+	return artifacts
+
+# interact with all the closest artifacts
+func interact_with_closest_artifacts():
 	# try interacting with all the artifacts in range in order of distance
 	for artifact in artifacts:
 		if artifact.interact():
-			
 			holding_item = artifact
 			var data = {
 				"name": artifact.get_sprite_name()
