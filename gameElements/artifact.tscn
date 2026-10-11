@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://4wu0lvi7i2rf" path="res://gameElements/artifact.gd" id="1_32u3t"]
 [ext_resource type="Texture2D" uid="uid://bd6pt7tja3u1w" path="res://assets/artifacts/artifact_stand_empty.png" id="2_uci8d"]
 [ext_resource type="Texture2D" uid="uid://bpoxobhvg682a" path="res://assets/artifacts/artifact_item_purpleguy.png" id="3_uci8d"]
-[ext_resource type="Texture2D" uid="uid://blisvawibrpqs" path="res://assets/Lights/PointLightGradient.tres" id="4_02tqw"]
+[ext_resource type="Texture2D" uid="uid://blisvawibrpqs" path="res://assets/lights/PointLightGradient.tres" id="4_02tqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_32u3t"]
 size = Vector2(64, 84)

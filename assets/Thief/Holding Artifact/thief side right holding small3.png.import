@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cp42n3tb2gda6"
-path="res://.godot/imported/thief side right holding small3.png-2b8877ac0b273cee55146228b4e3ea35.ctex"
+path="res://.godot/imported/thief side right holding small3.png-927e1992d629c25189e7c5ae4ab10d83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Thief/Holding Artifact/thief side right holding small3.png"
-dest_files=["res://.godot/imported/thief side right holding small3.png-2b8877ac0b273cee55146228b4e3ea35.ctex"]
+source_file="res://assets/thief/Holding Artifact/thief side right holding small3.png"
+dest_files=["res://.godot/imported/thief side right holding small3.png-927e1992d629c25189e7c5ae4ab10d83.ctex"]
 
 [params]
 

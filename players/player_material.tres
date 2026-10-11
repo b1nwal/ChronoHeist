@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://lwblg6nqxg0p"]
+
+[ext_resource type="Shader" uid="uid://dxlp8gcr6mkt" path="res://players/player_material.gdshader" id="1_27u53"]
+
+[resource]
+shader = ExtResource("1_27u53")
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/glow_intensity = 12.395
+shader_parameter/tolerance = 0.1

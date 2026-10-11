@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ble0wamj0w0l0"]
+[gd_scene load_steps=13 format=3 uid="uid://ble0wamj0w0l0"]
 
-[ext_resource type="Script" uid="uid://dbtcp73yh2w0d" path="res://UI/hud.gd" id="1_37p78"]
-[ext_resource type="FontFile" uid="uid://c02uvtj0ncjfu" path="res://font/gbb__.ttf" id="2_b1lf8"]
-[ext_resource type="FontFile" uid="uid://dqc0lwgptnont" path="res://font/PressStart2P-Regular.ttf" id="2_bytes"]
-[ext_resource type="Texture2D" uid="uid://bkjprkalaiyfr" path="res://assets/diamond.png" id="3_2o5uh"]
+[ext_resource type="Script" uid="uid://dbtcp73yh2w0d" path="res://ui/hud.gd" id="1_37p78"]
+[ext_resource type="FontFile" uid="uid://c02uvtj0ncjfu" path="res://assets/hud/font/gbb__.ttf" id="2_b1lf8"]
+[ext_resource type="FontFile" uid="uid://dqc0lwgptnont" path="res://assets/hud/font/PressStart2P-Regular.ttf" id="2_bytes"]
+[ext_resource type="Texture2D" uid="uid://bkjprkalaiyfr" path="res://assets/hud/diamond.png" id="3_2o5uh"]
 [ext_resource type="Texture2D" uid="uid://ccg42n3v4ri10" path="res://assets/portals/portal indicator bottom left.png" id="5_rnl6m"]
 [ext_resource type="Texture2D" uid="uid://beobw1mg015ke" path="res://assets/portals/portal indicator bottom right.png" id="6_1ui3w"]
 [ext_resource type="Texture2D" uid="uid://c0fbnna8opqbw" path="res://assets/portals/portal indicator down.png" id="7_phrgc"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://k0eqb0uw32hs" path="res://assets/portals/portal indicator top left.png" id="10_vdnig"]
 [ext_resource type="Texture2D" uid="uid://ldf7jq1ppv66" path="res://assets/portals/portal indicator top right.png" id="11_pueji"]
 [ext_resource type="Texture2D" uid="uid://cy7vo1fp4lin2" path="res://assets/portals/portal indicator up.png" id="12_4evux"]
-[ext_resource type="Texture2D" uid="uid://dom2mu1xfj7h" path="res://assets/e_indicator.png" id="13_8nmcf"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -167,4 +166,3 @@ offset_top = 608.0
 offset_right = 960.0
 offset_bottom = 648.0
 scale = Vector2(2.04154, 2.04154)
-texture = ExtResource("13_8nmcf")

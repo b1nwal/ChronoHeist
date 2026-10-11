@@ -1,30 +1,30 @@
 [gd_scene load_steps=28 format=3 uid="uid://ds72i60gi80dp"]
 
-[ext_resource type="Script" uid="uid://cb58eunt5ma8x" path="res://Players/playerPast.gd" id="1_om0np"]
-[ext_resource type="Texture2D" uid="uid://suloji8urlf5" path="res://assets/Thief/shadow.png" id="2_5fwkd"]
-[ext_resource type="Material" uid="uid://cj4j4v7svv4br" path="res://Players/PastPlayerMaterial.tres" id="2_qrs7w"]
-[ext_resource type="Texture2D" uid="uid://05wam5wt5n3x" path="res://assets/PastThief/thief front1.png" id="3_f5baa"]
-[ext_resource type="Texture2D" uid="uid://dgaetp4asxu2f" path="res://assets/PastThief/thief back1.png" id="4_om0np"]
-[ext_resource type="Texture2D" uid="uid://dglnj053onw3a" path="res://assets/PastThief/thief back2.png" id="4_ske43"]
-[ext_resource type="Texture2D" uid="uid://bhm5pkpqp3txa" path="res://assets/PastThief/thief back3.png" id="5_om0np"]
-[ext_resource type="Texture2D" uid="uid://ccl7q6r7w8hed" path="res://assets/PastThief/thief back4.png" id="6_qrs7w"]
-[ext_resource type="Texture2D" uid="uid://c3udd2tnr3ohn" path="res://assets/PastThief/thief back5.png" id="7_6aqf2"]
-[ext_resource type="Texture2D" uid="uid://db0idey0m0dsv" path="res://assets/PastThief/thief front2.png" id="8_5fwkd"]
-[ext_resource type="Texture2D" uid="uid://0mao6k04q6fe" path="res://assets/PastThief/thief front3.png" id="9_i8sd8"]
-[ext_resource type="Texture2D" uid="uid://b0gkqy5dhnslj" path="res://assets/PastThief/thief front4.png" id="10_8t037"]
-[ext_resource type="Texture2D" uid="uid://brr6eefjgk3bf" path="res://assets/PastThief/thief front5.png" id="11_pjjj4"]
-[ext_resource type="Texture2D" uid="uid://bh802s7h8eii8" path="res://assets/PastThief/thief side left2.png" id="12_khwun"]
-[ext_resource type="Texture2D" uid="uid://busj0fydotdf7" path="res://assets/PastThief/thief side left3.png" id="13_h82mm"]
-[ext_resource type="Texture2D" uid="uid://d1ek71185sotv" path="res://assets/PastThief/thief side left1.png" id="13_qrs7w"]
-[ext_resource type="Texture2D" uid="uid://bctmth4immiti" path="res://assets/PastThief/thief side left4.png" id="14_7mv4s"]
-[ext_resource type="Texture2D" uid="uid://dhavrsj56dy81" path="res://assets/PastThief/thief side left5.png" id="15_gdjsw"]
-[ext_resource type="Texture2D" uid="uid://c41bu04niyelc" path="res://assets/PastThief/thief side right2.png" id="16_pre6c"]
-[ext_resource type="Texture2D" uid="uid://buf41pwlys52f" path="res://assets/PastThief/thief side right3.png" id="17_xt6un"]
-[ext_resource type="Texture2D" uid="uid://bxax5d8v66w6g" path="res://assets/PastThief/thief side right1.png" id="18_6aqf2"]
-[ext_resource type="Texture2D" uid="uid://cikdkwfnoxoh2" path="res://assets/PastThief/thief side right4.png" id="18_88ni0"]
-[ext_resource type="Texture2D" uid="uid://da7lvdhqn7a5a" path="res://assets/PastThief/thief side right5.png" id="19_plf0p"]
-[ext_resource type="Texture2D" uid="uid://377xapsjvqhv" path="res://assets/flashlight.png" id="22_om0np"]
-[ext_resource type="Script" uid="uid://b7j7ijdgqb8aa" path="res://Players/playerSoundManager.gd" id="23_qrs7w"]
+[ext_resource type="Script" uid="uid://cb58eunt5ma8x" path="res://players/playerPast.gd" id="1_om0np"]
+[ext_resource type="Texture2D" uid="uid://suloji8urlf5" path="res://assets/thief/shadow.png" id="2_5fwkd"]
+[ext_resource type="Material" uid="uid://cj4j4v7svv4br" path="res://players/past_player_material.tres" id="2_qrs7w"]
+[ext_resource type="Texture2D" uid="uid://05wam5wt5n3x" path="res://assets/past_thief/thief front1.png" id="3_f5baa"]
+[ext_resource type="Texture2D" uid="uid://dgaetp4asxu2f" path="res://assets/past_thief/thief back1.png" id="4_om0np"]
+[ext_resource type="Texture2D" uid="uid://dglnj053onw3a" path="res://assets/past_thief/thief back2.png" id="4_ske43"]
+[ext_resource type="Texture2D" uid="uid://bhm5pkpqp3txa" path="res://assets/past_thief/thief back3.png" id="5_om0np"]
+[ext_resource type="Texture2D" uid="uid://ccl7q6r7w8hed" path="res://assets/past_thief/thief back4.png" id="6_qrs7w"]
+[ext_resource type="Texture2D" uid="uid://c3udd2tnr3ohn" path="res://assets/past_thief/thief back5.png" id="7_6aqf2"]
+[ext_resource type="Texture2D" uid="uid://db0idey0m0dsv" path="res://assets/past_thief/thief front2.png" id="8_5fwkd"]
+[ext_resource type="Texture2D" uid="uid://0mao6k04q6fe" path="res://assets/past_thief/thief front3.png" id="9_i8sd8"]
+[ext_resource type="Texture2D" uid="uid://b0gkqy5dhnslj" path="res://assets/past_thief/thief front4.png" id="10_8t037"]
+[ext_resource type="Texture2D" uid="uid://brr6eefjgk3bf" path="res://assets/past_thief/thief front5.png" id="11_pjjj4"]
+[ext_resource type="Texture2D" uid="uid://bh802s7h8eii8" path="res://assets/past_thief/thief side left2.png" id="12_khwun"]
+[ext_resource type="Texture2D" uid="uid://busj0fydotdf7" path="res://assets/past_thief/thief side left3.png" id="13_h82mm"]
+[ext_resource type="Texture2D" uid="uid://d1ek71185sotv" path="res://assets/past_thief/thief side left1.png" id="13_qrs7w"]
+[ext_resource type="Texture2D" uid="uid://bctmth4immiti" path="res://assets/past_thief/thief side left4.png" id="14_7mv4s"]
+[ext_resource type="Texture2D" uid="uid://dhavrsj56dy81" path="res://assets/past_thief/thief side left5.png" id="15_gdjsw"]
+[ext_resource type="Texture2D" uid="uid://c41bu04niyelc" path="res://assets/past_thief/thief side right2.png" id="16_pre6c"]
+[ext_resource type="Texture2D" uid="uid://buf41pwlys52f" path="res://assets/past_thief/thief side right3.png" id="17_xt6un"]
+[ext_resource type="Texture2D" uid="uid://bxax5d8v66w6g" path="res://assets/past_thief/thief side right1.png" id="18_6aqf2"]
+[ext_resource type="Texture2D" uid="uid://cikdkwfnoxoh2" path="res://assets/past_thief/thief side right4.png" id="18_88ni0"]
+[ext_resource type="Texture2D" uid="uid://da7lvdhqn7a5a" path="res://assets/past_thief/thief side right5.png" id="19_plf0p"]
+[ext_resource type="Texture2D" uid="uid://377xapsjvqhv" path="res://assets/lights/flashlight.png" id="22_om0np"]
+[ext_resource type="Script" uid="uid://b7j7ijdgqb8aa" path="res://players/playerSoundManager.gd" id="23_qrs7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c3q8"]
 size = Vector2(10.4, 20)
@@ -158,12 +158,22 @@ script = ExtResource("23_qrs7w")
 metadata/delay = 0.3
 
 [node name="footsteps" type="FmodEventEmitter2D" parent="playerSounds"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 event_name = "event:/walking"
 event_guid = "{f1337a33-50eb-40bb-a12e-da83cdddf796}"
 volume = 0.5
 fmod_parameters/ReverbWet/id = 3810293487696999223
 fmod_parameters/ReverbWet = 0.9
 fmod_parameters/ReverbWet/variant_type = 3
+script = null
 
 [node name="Cone" type="Node2D" parent="."]
 z_index = 1
