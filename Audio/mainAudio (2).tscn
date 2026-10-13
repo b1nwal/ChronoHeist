@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6ltadr1oryjt"]
+
+[ext_resource type="Script" uid="uid://bb7hj5o5lsls2" path="res://Audio/MusicManager.gd" id="1_jsss3"]
+[ext_resource type="Script" uid="uid://bi22j5q4f7am6" path="res://Audio/UIAudioManager (2).gd" id="2_s2bxm"]
+
+[node name="MainAudio" type="Node2D"]
+
+[node name="FmodBanks" type="FmodBankLoader" parent="."]
+bank_paths = ["res://assets/Audio/Desktop/Master.strings.bank", "res://assets/Audio/Desktop/Master.bank"]
+
+[node name="Music" type="Node2D" parent="."]
+script = ExtResource("1_jsss3")
+
+[node name="Music" type="FmodEventEmitter2D" parent="Music"]
+event_name = "event:/music"
+event_guid = "{3ace9a90-760a-46a8-945a-efeb9447ac4b}"
+autoplay = true
+volume = 0.3
+
+[node name="UI" type="Node" parent="."]
+script = ExtResource("2_s2bxm")
+
+[node name="Button" type="FmodEventEmitter2D" parent="UI"]
+volume = 0.25

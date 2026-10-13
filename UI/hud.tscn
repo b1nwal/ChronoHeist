@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://ble0wamj0w0l0"]
 
-[ext_resource type="Script" uid="uid://dbtcp73yh2w0d" path="res://ui/hud.gd" id="1_37p78"]
+[ext_resource type="Script" uid="uid://dbtcp73yh2w0d" path="res://UI/hud.gd" id="1_37p78"]
 [ext_resource type="FontFile" uid="uid://c02uvtj0ncjfu" path="res://font/gbb__.ttf" id="2_b1lf8"]
-[ext_resource type="Texture2D" uid="uid://bkjprkalaiyfr" path="res://assets/diamond.png" id="3_2o5uh"]
+[ext_resource type="Texture2D" uid="uid://bkjprkalaiyfr" path="res://assets/hud_ui/diamond.png" id="3_2o5uh"]
 [ext_resource type="Texture2D" uid="uid://ccg42n3v4ri10" path="res://assets/portals/portal_indicator_bottom_left.png" id="5_rnl6m"]
 [ext_resource type="Texture2D" uid="uid://beobw1mg015ke" path="res://assets/portals/portal_indicator_bottom_right.png" id="6_1ui3w"]
 [ext_resource type="Texture2D" uid="uid://c0fbnna8opqbw" path="res://assets/portals/portal_indicator_down.png" id="7_phrgc"]

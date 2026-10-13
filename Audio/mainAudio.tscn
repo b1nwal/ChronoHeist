@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b24ul1wsvci6l"]
 
 [ext_resource type="Script" uid="uid://bb7hj5o5lsls2" path="res://Audio/MusicManager.gd" id="1_rbxdr"]
-[ext_resource type="Script" uid="uid://bi22j5q4f7am6" path="res://UIAudioManager.gd" id="2_yfnwt"]
+[ext_resource type="Script" uid="uid://bi22j5q4f7am6" path="res://Audio/UIAudioManager (2).gd" id="2_yfnwt"]
 
 [node name="MainAudio" type="Node2D"]
 
