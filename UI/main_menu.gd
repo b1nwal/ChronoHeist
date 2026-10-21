@@ -1,6 +1,6 @@
 extends Control
 
-const GAME_SCENE = preload("res://main.tscn")
+const GAME_SCENE = preload("res://main/main.tscn")
 @onready var music = MainAudio.get_node("Music")
 @onready var UI_audio = MainAudio.get_node("UI")
 

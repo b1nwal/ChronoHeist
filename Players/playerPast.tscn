@@ -1,8 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://ds72i60gi80dp"]
 
-[ext_resource type="Script" uid="uid://cb58eunt5ma8x" path="res://players/playerPast.gd" id="1_om0np"]
-[ext_resource type="Texture2D" uid="uid://suloji8urlf5" path="res://assets/thief/shadow.png" id="2_5fwkd"]
-[ext_resource type="Material" uid="uid://cj4j4v7svv4br" path="res://players/past_player_material.tres" id="2_qrs7w"]
+[ext_resource type="Script" uid="uid://cb58eunt5ma8x" path="res://Players/playerPast.gd" id="1_om0np"]
+[ext_resource type="Texture2D" uid="uid://suloji8urlf5" path="res://assets/Thief/shadow.png" id="2_5fwkd"]
+[ext_resource type="Material" uid="uid://cj4j4v7svv4br" path="res://Players/past_player_material.tres" id="2_qrs7w"]
 [ext_resource type="Texture2D" uid="uid://05wam5wt5n3x" path="res://assets/past_thief/thief_front1.png" id="3_f5baa"]
 [ext_resource type="Texture2D" uid="uid://dgaetp4asxu2f" path="res://assets/past_thief/thief_back1.png" id="4_om0np"]
 [ext_resource type="Texture2D" uid="uid://dglnj053onw3a" path="res://assets/past_thief/thief_back2.png" id="4_ske43"]
@@ -23,8 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://bxax5d8v66w6g" path="res://assets/past_thief/thief_side_right1.png" id="18_6aqf2"]
 [ext_resource type="Texture2D" uid="uid://cikdkwfnoxoh2" path="res://assets/past_thief/thief_side_right4.png" id="18_88ni0"]
 [ext_resource type="Texture2D" uid="uid://da7lvdhqn7a5a" path="res://assets/past_thief/thief_side_right5.png" id="19_plf0p"]
-[ext_resource type="Texture2D" uid="uid://377xapsjvqhv" path="res://assets/flashlight.png" id="22_om0np"]
-[ext_resource type="Script" uid="uid://b7j7ijdgqb8aa" path="res://players/playerSoundManager.gd" id="23_qrs7w"]
+[ext_resource type="Texture2D" uid="uid://377xapsjvqhv" path="res://assets/lights/flashlight.png" id="22_om0np"]
+[ext_resource type="Script" uid="uid://b7j7ijdgqb8aa" path="res://Players/playerSoundManager.gd" id="23_qrs7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c3q8"]
 size = Vector2(10.4, 20)

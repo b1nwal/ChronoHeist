@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://blti83jws74w1"]
 
 [ext_resource type="Script" uid="uid://c0fuonfowx6p" path="res://UI/victory_scene.gd" id="1_80an8"]
-[ext_resource type="Texture2D" uid="uid://b0anaps8xm6rl" path="res://assets/victoryscene_placeholder.jpeg" id="2_o3r43"]
+[ext_resource type="Texture2D" uid="uid://b0anaps8xm6rl" path="res://assets/test_placeholders/victoryscene_placeholder.jpeg" id="2_o3r43"]
 
 [node name="victory scene" type="Control"]
 layout_mode = 3
