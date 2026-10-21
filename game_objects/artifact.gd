@@ -12,7 +12,7 @@ var point_value = 200
 # null creates an empty stand. otherwise please input a string or else my code explodes
 func initialize_data(pos: Vector2, sprite_name = null, points = 200):
 	
-	var sprite = $Sprite2D
+	var sprite = $Pedestal
 	
 	collected = false
 	position = pos
@@ -37,7 +37,7 @@ func initialize_data(pos: Vector2, sprite_name = null, points = 200):
 # returns true if the artifact was successfully collected. returns false if you cant interact.
 func interact() -> bool:
 	
-	var sprite = $Sprite2D
+	var sprite = $Pedestal
 	
 	if collected:
 		return false

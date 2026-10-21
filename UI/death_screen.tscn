@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck43kd3047t0s"]
 
 [ext_resource type="Texture2D" uid="uid://ckl661esqlpss" path="res://assets/test_placeholders/deathscreen_placeholder.jpg" id="1_ls05l"]
-[ext_resource type="Script" uid="uid://pdp21finw6p3" path="res://UI/death_screen.gd" id="1_n1nej"]
+[ext_resource type="Script" uid="uid://pdp21finw6p3" path="res://ui/death_screen.gd" id="1_n1nej"]
 
 [node name="death screen" type="Control"]
 layout_mode = 3
