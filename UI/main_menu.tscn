@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://nse38d24or5w"]
+[gd_scene load_steps=10 format=3 uid="uid://nse38d24or5w"]
 
 [ext_resource type="Script" uid="uid://c0giqgdmoo1fr" path="res://ui/main_menu.gd" id="1_tk8dj"]
-[ext_resource type="Texture2D" uid="uid://d21jiwwvhcyao" path="res://assets/test_placeholders/splash.png" id="2_tk8dj"]
 [ext_resource type="Texture2D" uid="uid://ca4voqqjs76hw" path="res://assets/splash_animation/splash1.png" id="3_d8nwk"]
 [ext_resource type="Texture2D" uid="uid://cl4seyuciqyb8" path="res://assets/splash_animation/splash2.png" id="4_k0a0m"]
 [ext_resource type="Texture2D" uid="uid://dbxypt5ohrrr3" path="res://assets/splash_animation/splash3.png" id="5_2mudq"]
@@ -53,7 +52,7 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_4cwpn")
 autoplay = "default"
 
-[node name="Label" type="Label" parent="."]
+[node name="StartText" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -70,15 +69,3 @@ theme_override_constants/outline_size = 18
 theme_override_fonts/font = ExtResource("8_arv2f")
 theme_override_font_sizes/font_size = 60
 text = "press enter to start"
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(960, 1080)
-texture = ExtResource("2_tk8dj")
-expand_mode = 2

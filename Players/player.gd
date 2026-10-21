@@ -10,8 +10,8 @@ const PIXELS_PER_METRE = 100
 
 @onready var speed = get_meta("speed")
 @onready var mass = get_meta("Mass")
-@onready var animated_sprite = $Sprite2D
-@onready var item_sprite = $ItemSprite2D
+@onready var animated_sprite = $PlayerSprite
+@onready var item_sprite = $ItemSprite
 @onready var interaction_range = $InteractionRange
 @onready var soundManager = $playerSounds
 @onready var particles = $GPUParticles2D
