@@ -2,3 +2,4 @@
 .godot/
 /android/
 *.tmp
+addons/fmod/libs/windows/~libGodotFmod.windows.editor.x86_64.dll
