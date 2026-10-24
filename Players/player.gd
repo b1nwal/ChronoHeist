@@ -24,6 +24,7 @@ var holding_item = null
 var running = false
 var invincible := true
 var record = [Vector2()]
+var facing_direction = "forward"
 
 ## idk what this is 
 var run_start
@@ -112,40 +113,31 @@ func handle_movement(i_vec, delta):
 	var acceleration = (force * PIXELS_PER_METRE) / mass # F = ma -> a = F/m
 	v_mag += acceleration * delta # integrate acceleration into velocity
 	velocity = v_vec * v_mag # velocity vector
+
 	
 func render_player(v_vec):
+	if particles:
+			particles.emitting = true
 	if v_vec[0] > 0:
-		if particles:
-			particles.emitting = true
-		if holding_item:
-			animated_sprite.play("walk_right_artifact")
-		else:
-			animated_sprite.play("walk_right")
+		_render_player_helper("right")
 	elif v_vec[0] < 0:
-		if particles:
-			particles.emitting = true
-		if holding_item:
-			animated_sprite.play("walk_left_artifact")
-		else:
-			animated_sprite.play("walk_left")
+		_render_player_helper("left")
 	elif v_vec[1] > 0:
-		if particles:
-			particles.emitting = true
-		if holding_item:
-			animated_sprite.play("walk_forward_artifact")
-		else:
-			animated_sprite.play("walk_forward")
+		_render_player_helper("forward")
 	elif v_vec[1] < 0:
-		if particles:
-			particles.emitting = true
-		animated_sprite.play("walk_backward")
+		_render_player_helper("backward")
 	elif v_vec[0] == 0:
-		if particles:
-			particles.emitting = false
 		if holding_item:
-			animated_sprite.play("default_artifact")
+			animated_sprite.play("default_"+facing_direction+"_artifact")
 		else:
-			animated_sprite.play("default")
+			animated_sprite.play("default_"+facing_direction)
+
+func _render_player_helper(direction):
+	facing_direction = direction
+	if holding_item:
+		animated_sprite.play("walk_"+direction+"_artifact")
+	else:
+		animated_sprite.play("walk_"+direction)
 
 func set_invincible(boo):
 	invincible = boo
