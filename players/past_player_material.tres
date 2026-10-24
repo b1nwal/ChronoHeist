@@ -1,9 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cj4j4v7svv4br"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dccsbmjabfeao"]
 
-[ext_resource type="Shader" uid="uid://cp118pb0js2yx" path="res://Players/PastPlayerMaterial.gdshader" id="1_3w5xr"]
+[ext_resource type="Shader" path="res://Players/past_player_material.gdshader" id="1_g3cwq"]
 
 [resource]
-shader = ExtResource("1_3w5xr")
-shader_parameter/glow_color = Color(1, 1, 1, 1)
-shader_parameter/glow_intensity = 10.0
+shader = ExtResource("1_g3cwq")
+shader_parameter/glow_color = Color(1, 0, 0, 1)
+shader_parameter/glow_intensity = 5.0
 shader_parameter/tolerance = 0.1
