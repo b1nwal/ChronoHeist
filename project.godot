@@ -29,7 +29,7 @@ DSP/dsp_buffer_count=4
 
 [application]
 
-config/name="Chrono_Heist"
+config/name="SummerSummit2026"
 run/main_scene="uid://nse38d24or5w"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
