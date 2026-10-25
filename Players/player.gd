@@ -15,6 +15,8 @@ const PIXELS_PER_METRE = 100
 @onready var interaction_range = $InteractionRange
 @onready var soundManager = $playerSounds
 @onready var particles = $GPUParticles2D
+@onready var dash = $Dash
+@onready var flash = $Flash
 
 ## GAME STATES
 var gameoverseq := false
@@ -62,10 +64,16 @@ func gameoverbruh():
 func _unhandled_input(event):
 	if get_script() != Player:
 		return
-
+		
+	if event.is_action_pressed("dash"):
+		dash.tryactivate()
+	if event.is_action_pressed("flash"):
+		flash.tryactivate()
+		
 	if event.is_action_pressed("interact"):
 		if !holding_item:
 			interact_with_closest_artifacts()
+			
 
 func _obtain_v_vec():
 	var a = Input.get_vector("move_left","move_right","move_up","move_down")
@@ -113,6 +121,7 @@ func handle_movement(i_vec, delta):
 	var acceleration = (force * PIXELS_PER_METRE) / mass # F = ma -> a = F/m
 	v_mag += acceleration * delta # integrate acceleration into velocity
 	velocity = v_vec * v_mag # velocity vector
+	#print(f_applied)
 
 	
 func render_player(v_vec):

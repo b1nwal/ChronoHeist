@@ -1,7 +1,7 @@
-[gd_scene load_steps=85 format=3 uid="uid://bw4aphjyapcqh"]
+[gd_scene load_steps=87 format=3 uid="uid://bw4aphjyapcqh"]
 
 [ext_resource type="Texture2D" uid="uid://dmo3p0nl7eyp4" path="res://assets/particles/particle_effects2.png" id="1_2ggna"]
-[ext_resource type="Material" uid="uid://dfdvexhb6pcdi" path="res://players/player_material.tres" id="1_8g4q3"]
+[ext_resource type="Material" uid="uid://dfdvexhb6pcdi" path="res://Players/player_material.tres" id="1_8g4q3"]
 [ext_resource type="Texture2D" uid="uid://cxxknilyn6av4" path="res://assets/Thief/thief_front1.png" id="1_fq5u1"]
 [ext_resource type="Texture2D" uid="uid://suloji8urlf5" path="res://assets/Thief/shadow.png" id="1_tintf"]
 [ext_resource type="Texture2D" uid="uid://d381ir0y2xegq" path="res://assets/Thief/thief_back2.png" id="3_tintf"]
@@ -79,6 +79,8 @@
 [ext_resource type="Texture2D" uid="uid://bftdmfims4ctr" path="res://assets/Thief/holding_artifact/thief_side_left_holding_small1.png" id="46_lvll6"]
 [ext_resource type="Texture2D" uid="uid://ccyx7hpdglfy4" path="res://assets/Thief/thief_side_right1.png" id="47_62rcy"]
 [ext_resource type="Texture2D" uid="uid://tdtfhymhdxbl" path="res://assets/Thief/holding_artifact/thief_side_right_holding_small1.png" id="48_elccj"]
+[ext_resource type="Script" uid="uid://3r1tlerdft6x" path="res://Players/dash.gd" id="81_lvll6"]
+[ext_resource type="Script" uid="uid://d2ghvf2vpybrn" path="res://Players/flash.gd" id="82_62rcy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5gvhf"]
 animations = [{
@@ -557,3 +559,9 @@ randomness = 0.5
 collision_base_size = 4.0
 visibility_rect = Rect2(-100, -100, 200, 110)
 process_material = SubResource("ParticleProcessMaterial_wu1qw")
+
+[node name="Dash" type="Node" parent="."]
+script = ExtResource("81_lvll6")
+
+[node name="Flash" type="Node" parent="."]
+script = ExtResource("82_62rcy")
