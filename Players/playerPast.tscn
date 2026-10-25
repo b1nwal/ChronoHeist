@@ -1,30 +1,27 @@
-[gd_scene load_steps=28 format=3 uid="uid://ds72i60gi80dp"]
+[gd_scene load_steps=25 format=3 uid="uid://ds72i60gi80dp"]
 
-[ext_resource type="Script" uid="uid://cb58eunt5ma8x" path="res://players/playerPast.gd" id="1_om0np"]
-[ext_resource type="Texture2D" uid="uid://suloji8urlf5" path="res://assets/thief/shadow.png" id="2_5fwkd"]
-[ext_resource type="Material" uid="uid://cj4j4v7svv4br" path="res://players/past_player_material.tres" id="2_qrs7w"]
-[ext_resource type="Texture2D" uid="uid://05wam5wt5n3x" path="res://assets/past_thief/thief_front1.png" id="3_f5baa"]
-[ext_resource type="Texture2D" uid="uid://dgaetp4asxu2f" path="res://assets/past_thief/thief_back1.png" id="4_om0np"]
-[ext_resource type="Texture2D" uid="uid://dglnj053onw3a" path="res://assets/past_thief/thief_back2.png" id="4_ske43"]
-[ext_resource type="Texture2D" uid="uid://bhm5pkpqp3txa" path="res://assets/past_thief/thief_back3.png" id="5_om0np"]
-[ext_resource type="Texture2D" uid="uid://ccl7q6r7w8hed" path="res://assets/past_thief/thief_back4.png" id="6_qrs7w"]
-[ext_resource type="Texture2D" uid="uid://c3udd2tnr3ohn" path="res://assets/past_thief/thief_back5.png" id="7_6aqf2"]
-[ext_resource type="Texture2D" uid="uid://db0idey0m0dsv" path="res://assets/past_thief/thief_front2.png" id="8_5fwkd"]
-[ext_resource type="Texture2D" uid="uid://0mao6k04q6fe" path="res://assets/past_thief/thief_front3.png" id="9_i8sd8"]
-[ext_resource type="Texture2D" uid="uid://b0gkqy5dhnslj" path="res://assets/past_thief/thief_front4.png" id="10_8t037"]
-[ext_resource type="Texture2D" uid="uid://brr6eefjgk3bf" path="res://assets/past_thief/thief_front5.png" id="11_pjjj4"]
-[ext_resource type="Texture2D" uid="uid://bh802s7h8eii8" path="res://assets/past_thief/thief_side_left2.png" id="12_khwun"]
-[ext_resource type="Texture2D" uid="uid://busj0fydotdf7" path="res://assets/past_thief/thief_side_left3.png" id="13_h82mm"]
-[ext_resource type="Texture2D" uid="uid://d1ek71185sotv" path="res://assets/past_thief/thief_side_left1.png" id="13_qrs7w"]
-[ext_resource type="Texture2D" uid="uid://bctmth4immiti" path="res://assets/past_thief/thief_side_left4.png" id="14_7mv4s"]
-[ext_resource type="Texture2D" uid="uid://dhavrsj56dy81" path="res://assets/past_thief/thief_side_left5.png" id="15_gdjsw"]
-[ext_resource type="Texture2D" uid="uid://c41bu04niyelc" path="res://assets/past_thief/thief_side_right2.png" id="16_pre6c"]
-[ext_resource type="Texture2D" uid="uid://buf41pwlys52f" path="res://assets/past_thief/thief_side_right3.png" id="17_xt6un"]
-[ext_resource type="Texture2D" uid="uid://bxax5d8v66w6g" path="res://assets/past_thief/thief_side_right1.png" id="18_6aqf2"]
-[ext_resource type="Texture2D" uid="uid://cikdkwfnoxoh2" path="res://assets/past_thief/thief_side_right4.png" id="18_88ni0"]
-[ext_resource type="Texture2D" uid="uid://da7lvdhqn7a5a" path="res://assets/past_thief/thief_side_right5.png" id="19_plf0p"]
+[ext_resource type="Script" uid="uid://cb58eunt5ma8x" path="res://Players/playerPast.gd" id="1_om0np"]
+[ext_resource type="Texture2D" uid="uid://suloji8urlf5" path="res://assets/Thief/shadow.png" id="2_5fwkd"]
+[ext_resource type="Material" uid="uid://dccsbmjabfeao" path="res://Players/past_player_material.tres" id="2_qrs7w"]
+[ext_resource type="Texture2D" uid="uid://05wam5wt5n3x" path="res://assets/Thief/past_thief/thief_front1.png" id="3_f5baa"]
+[ext_resource type="Texture2D" uid="uid://dglnj053onw3a" path="res://assets/Thief/past_thief/thief_back2.png" id="4_ske43"]
+[ext_resource type="Texture2D" uid="uid://bhm5pkpqp3txa" path="res://assets/Thief/past_thief/thief_back3.png" id="5_om0np"]
+[ext_resource type="Texture2D" uid="uid://ccl7q6r7w8hed" path="res://assets/Thief/past_thief/thief_back4.png" id="6_qrs7w"]
+[ext_resource type="Texture2D" uid="uid://c3udd2tnr3ohn" path="res://assets/Thief/past_thief/thief_back5.png" id="7_6aqf2"]
+[ext_resource type="Texture2D" uid="uid://db0idey0m0dsv" path="res://assets/Thief/past_thief/thief_front2.png" id="8_5fwkd"]
+[ext_resource type="Texture2D" uid="uid://0mao6k04q6fe" path="res://assets/Thief/past_thief/thief_front3.png" id="9_i8sd8"]
+[ext_resource type="Texture2D" uid="uid://b0gkqy5dhnslj" path="res://assets/Thief/past_thief/thief_front4.png" id="10_8t037"]
+[ext_resource type="Texture2D" uid="uid://brr6eefjgk3bf" path="res://assets/Thief/past_thief/thief_front5.png" id="11_pjjj4"]
+[ext_resource type="Texture2D" uid="uid://bh802s7h8eii8" path="res://assets/Thief/past_thief/thief_side_left2.png" id="12_khwun"]
+[ext_resource type="Texture2D" uid="uid://busj0fydotdf7" path="res://assets/Thief/past_thief/thief_side_left3.png" id="13_h82mm"]
+[ext_resource type="Texture2D" uid="uid://bctmth4immiti" path="res://assets/Thief/past_thief/thief_side_left4.png" id="14_7mv4s"]
+[ext_resource type="Texture2D" uid="uid://dhavrsj56dy81" path="res://assets/Thief/past_thief/thief_side_left5.png" id="15_gdjsw"]
+[ext_resource type="Texture2D" uid="uid://c41bu04niyelc" path="res://assets/Thief/past_thief/thief_side_right2.png" id="16_pre6c"]
+[ext_resource type="Texture2D" uid="uid://buf41pwlys52f" path="res://assets/Thief/past_thief/thief_side_right3.png" id="17_xt6un"]
+[ext_resource type="Texture2D" uid="uid://cikdkwfnoxoh2" path="res://assets/Thief/past_thief/thief_side_right4.png" id="18_88ni0"]
+[ext_resource type="Texture2D" uid="uid://da7lvdhqn7a5a" path="res://assets/Thief/past_thief/thief_side_right5.png" id="19_plf0p"]
 [ext_resource type="Texture2D" uid="uid://377xapsjvqhv" path="res://assets/lights/flashlight.png" id="22_om0np"]
-[ext_resource type="Script" uid="uid://b7j7ijdgqb8aa" path="res://players/playerSoundManager.gd" id="23_qrs7w"]
+[ext_resource type="Script" uid="uid://b7j7ijdgqb8aa" path="res://Players/playerSoundManager.gd" id="23_qrs7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3c3q8"]
 size = Vector2(10.4, 20)
@@ -36,13 +33,10 @@ animations = [{
 "texture": ExtResource("3_f5baa")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default_forward",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_om0np")
-}, {
 "duration": 1.0,
 "texture": ExtResource("4_ske43")
 }, {
@@ -61,9 +55,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_f5baa")
-}, {
-"duration": 1.0,
 "texture": ExtResource("8_5fwkd")
 }, {
 "duration": 1.0,
@@ -81,9 +72,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_qrs7w")
-}, {
-"duration": 1.0,
 "texture": ExtResource("12_khwun")
 }, {
 "duration": 1.0,
@@ -100,9 +88,6 @@ animations = [{
 "speed": 7.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("18_6aqf2")
-}, {
 "duration": 1.0,
 "texture": ExtResource("16_pre6c")
 }, {
@@ -146,7 +131,7 @@ material = ExtResource("2_qrs7w")
 position = Vector2(2.6226e-06, 1.43051e-06)
 scale = Vector2(2, 1.768)
 sprite_frames = SubResource("SpriteFrames_n48rb")
-animation = &"walk_right"
+animation = &"default_forward"
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 position = Vector2(3, 0)

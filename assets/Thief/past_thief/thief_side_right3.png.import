@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cikdkwfnoxoh2"
-path="res://.godot/imported/thief_side_right4.png-a775e100dca7eb5924b33b7b675e288d.ctex"
+uid="uid://buf41pwlys52f"
+path="res://.godot/imported/thief_side_right3.png-688fd639b64a964f4454a1cb2fd34954.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/past_thief/thief_side_right4.png"
-dest_files=["res://.godot/imported/thief_side_right4.png-a775e100dca7eb5924b33b7b675e288d.ctex"]
+source_file="res://assets/Thief/past_thief/thief_side_right3.png"
+dest_files=["res://.godot/imported/thief_side_right3.png-688fd639b64a964f4454a1cb2fd34954.ctex"]
 
 [params]
 
