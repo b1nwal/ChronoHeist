@@ -1,61 +1,42 @@
 class_name Artifact
 extends Node2D
 
-# artifact's sprite child node
+@onready var particles := $GPUParticles2D
+@onready var stand := $Stand
+@onready var artifact := $artifactsprite
+@export var empty_stand_texture : CompressedTexture2D 
+@export var artifact_texture : CompressedTexture2D
+@export var mini_artifact_texture : CompressedTexture2D
+@export var points : int
+var is_collected : bool = false 
+var point_value : int 
 
-@onready var particles = $GPUParticles2D
-const TEXTURE_STAND_EMPTY = preload("res://assets/artifacts/artifact_stand_empty.png")
-var collected # boolean: is the artifact collected?
-var treasure_sprite_name
-var point_value = 200
+# Initialize stand textures
+func _ready() -> void:
+	stand.texture = empty_stand_texture
+	artifact.texture = artifact_texture
+	_start_float()
 
-# null creates an empty stand. otherwise please input a string or else my code explodes
-func initialize_data(pos: Vector2, sprite_name = null, points = 200):
-	
-	var sprite = $Pedestal
-	
-	collected = false
-	position = pos
-	point_value = points
-	
-	sprite.texture = TEXTURE_STAND_EMPTY
-	if sprite_name == null:
-		collected = true
-		$artifactsprite.hide()
-		
-	
-	else:
-		treasure_sprite_name = sprite_name
-		
-		var data = {
-			"sprite_name": sprite_name
-		}
-		
-		$artifactsprite.texture = load("res://assets/artifacts/artifact_item_{sprite_name}.png".format(data))
-		$artifactsprite.show()
-		_start_float()
 # returns true if the artifact was successfully collected. returns false if you cant interact.
 func interact() -> bool:
-	
-	var sprite = $Pedestal
-	
-	if collected:
+	if is_collected:
 		return false
-		
 	else:
-		collected = true
+		is_collected = true
 		particles.restart()
-		$artifactsprite.hide()
+		artifact.hide()
 		return true 
-		
-# returns the name of the artifact to render on player 
-func get_sprite_name() -> String:
-	return treasure_sprite_name
+
+# returns texture of the mini version of the artifact for the player to hold
+func get_mini_artifact() -> CompressedTexture2D:
+	return mini_artifact_texture
+
+# return the amount of points you should receive for the artifact
+func get_points() -> int:
+	return points
 
 # make the artifact move up and down
 func _start_float() -> void:
 	var t := create_tween().set_loops()
-	t.tween_property($artifactsprite, "position", Vector2(32, -88), 1.5) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	t.tween_property($artifactsprite, "position", Vector2(32, -112), 1.5) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	t.tween_property(artifact, "position", Vector2(0, -100), 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	t.tween_property(artifact, "position", Vector2(0, -112), 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
