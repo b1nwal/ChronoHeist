@@ -81,7 +81,9 @@ func _obtain_v_vec():
 	return [a,position]
 
 func _process(_delta: float) -> void:
-	pass
+	$FlashLight.rotation = facing.angle()
+	$Cone.rotation = facing.angle()
+	render_player(i_vec)
 
 func _physics_process(delta: float) -> void:
 	artifacts = artifact_inrange()
@@ -95,7 +97,6 @@ func _physics_process(delta: float) -> void:
 			on_exit_point_reached()
 
 	move_and_slide()
-	render_player(i_vec)
 	
 	if self is not PastPlayer:
 		if artifacts.size() > 0 and not holding_item:
@@ -152,9 +153,6 @@ func set_invincible(boo):
 	invincible = boo
 
 func handle_flashlight(delta: float) -> void:
-	
-	$FlashLight.rotation = facing.angle()
-	$Cone.rotation = facing.angle()
 	
 	if gameoverseq == false and invincible == false:
 		var target = null
