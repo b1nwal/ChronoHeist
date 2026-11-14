@@ -1,7 +1,7 @@
 class_name Artifact
 extends Node2D
 
-@onready var particles := $GPUParticles2D
+#@onready var particles := $GPUParticles2D
 @onready var stand := $Stand
 @onready var artifact := $artifactsprite
 @export var empty_stand_texture : CompressedTexture2D 
@@ -23,7 +23,7 @@ func interact() -> bool:
 		return false
 	else:
 		is_collected = true
-		particles.restart()
+		#particles.restart()
 		artifact.hide()
 		return true 
 

@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://b35eeeqh6pcs8" path="res://assets/map_background/map_layout_bg.png" id="2_272bh"]
 [ext_resource type="Texture2D" uid="uid://cw1eqfmoysuyg" path="res://assets/map_background/map_layout.png" id="2_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://players/player.tscn" id="3_7mycd"]
-[ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://players/player.gd" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://Players/player.tscn" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://Players/player.gd" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://dqw4w4fravoym" path="res://assets/map_background/wall_floor_tile_normal.png" id="4_kek77"]
 [ext_resource type="Texture2D" uid="uid://bkrywdyp51cc2" path="res://assets/map_background/wall_floor_tile_specular.png" id="5_4c57u"]
-[ext_resource type="PackedScene" uid="uid://ble0wamj0w0l0" path="res://ui/hud.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ble0wamj0w0l0" path="res://UI/hud.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://d0gfo2g0kaye3" path="res://assets/map_background/decor_tiles.png" id="6_4c57u"]
 [ext_resource type="Texture2D" uid="uid://com23kpi8s6xx" path="res://assets/portals/big_portal1.png" id="11_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://xk2wss46q787" path="res://assets/portals/big_portal2.png" id="12_ycdy4"]
@@ -23,7 +23,7 @@ diffuse_texture = ExtResource("2_7mycd")
 normal_texture = ExtResource("4_kek77")
 specular_texture = ExtResource("5_4c57u")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_na0o7"]
 texture = SubResource("CanvasTexture_efxa6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -77,9 +77,9 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_5vw27"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_272bh")
+sources/0 = SubResource("TileSetAtlasSource_na0o7")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_73k8k"]
 texture = ExtResource("2_7mycd")
 0:0/0 = 0
 1:0/0 = 0
@@ -521,9 +521,9 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "Terrain 0"
 terrain_set_1/terrain_0/color = Color(0.473413, 0.322441, 0.481195, 1)
-sources/0 = SubResource("TileSetAtlasSource_kek77")
+sources/0 = SubResource("TileSetAtlasSource_73k8k")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efxa6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xyti"]
 texture = ExtResource("6_4c57u")
 0:0/0 = 0
 1:0/0 = 0
@@ -748,7 +748,7 @@ terrain_set_0/terrain_0/color = Color(0.251978, 0.399053, 0.532526, 1)
 terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "Terrain 0"
 terrain_set_1/terrain_0/color = Color(0.472463, 0.229202, 0.727271, 1)
-sources/0 = SubResource("TileSetAtlasSource_efxa6")
+sources/0 = SubResource("TileSetAtlasSource_5xyti")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_82xsv"]
 polygon = PackedVector2Array(-10.8334, -9.24029, 10.914, -9.5434, 10.2033, -15.1273, -10.5079, -14.9243)
@@ -765,7 +765,7 @@ polygon = PackedVector2Array(-10.8334, -9.24029, 10.914, -9.5434, 10.2033, -15.1
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_efxa6"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, -11.4707, -16, -6.37262)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycdy4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n3o0a"]
 texture = ExtResource("6_4c57u")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
@@ -812,7 +812,7 @@ tile_size = Vector2i(32, 32)
 uv_clipping = true
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ycdy4")
+sources/0 = SubResource("TileSetAtlasSource_n3o0a")
 
 [sub_resource type="Environment" id="Environment_7mycd"]
 background_mode = 3

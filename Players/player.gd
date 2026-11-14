@@ -215,10 +215,6 @@ func interact_with_closest_artifacts():
 	# try interacting with all the artifacts in range in order of distance
 	for artifact in artifacts:
 		if artifact.interact():
-			holding_item = artifact
-			var data = {
-				"name": artifact.get_sprite_name()
-			}
-			item_sprite.texture = load("res://assets/artifacts/artifact_item_{name}_small.png".format(data))
+			item_sprite.texture = artifact.get_mini_artifact()
 			soundManager.play_artifact_sound()
 			break
