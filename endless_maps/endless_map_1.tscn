@@ -1,6 +1,7 @@
-[gd_scene load_steps=140 format=4 uid="uid://3ce7imqslowc"]
+[gd_scene load_steps=141 format=4 uid="uid://3ce7imqslowc"]
 
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="1_8uxuk"]
+[ext_resource type="Script" uid="uid://oscyvgf6yi3h" path="res://endless_maps/endless_map_1.gd" id="1_wprj1"]
 [ext_resource type="Texture2D" uid="uid://dqw4w4fravoym" path="res://assets/map_background/wall_floor_tile_normal.png" id="2_souej"]
 [ext_resource type="Texture2D" uid="uid://bkrywdyp51cc2" path="res://assets/map_background/wall_floor_tile_specular.png" id="3_56a1s"]
 [ext_resource type="Texture2D" uid="uid://d0gfo2g0kaye3" path="res://assets/map_background/decor_tiles.png" id="4_3xhgx"]
@@ -1152,6 +1153,7 @@ polygon = PackedVector2Array(2816, 64, 2816, 128, 2880, 128, 2880, 512, 2816, 51
 polygon = PackedVector2Array(1472, 640, 1536, 640, 1536, 576, 2752, 576, 2752, 512, 2624, 512, 2624, 128, 2752, 128, 2752, 64, 2560, 64, 2560, 512, 1472, 512)
 
 [node name="endless_map_1" type="Node2D"]
+script = ExtResource("1_wprj1")
 
 [node name="map" type="Node2D" parent="."]
 visibility_layer = 2
@@ -1729,5 +1731,5 @@ position = Vector2(2304, 2080)
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
-position = Vector2(2411, 2344)
+position = Vector2(672, 1128)
 script = ExtResource("7_3xhgx")

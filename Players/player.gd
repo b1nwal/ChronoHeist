@@ -215,6 +215,7 @@ func interact_with_closest_artifacts():
 	# try interacting with all the artifacts in range in order of distance
 	for artifact in artifacts:
 		if artifact.interact():
-			item_sprite.texture = artifact.get_mini_artifact()
+			holding_item = artifact.get_mini_artifact()
+			item_sprite.texture = holding_item
 			soundManager.play_artifact_sound()
 			break
