@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=4 uid="uid://3ce7imqslowc"]
+[gd_scene load_steps=160 format=4 uid="uid://3ce7imqslowc"]
 
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="1_8uxuk"]
 [ext_resource type="Script" uid="uid://oscyvgf6yi3h" path="res://endless_maps/endless_map_1.gd" id="1_wprj1"]
@@ -11,6 +11,25 @@
 [ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://Players/player.gd" id="7_3xhgx"]
 [ext_resource type="Texture2D" uid="uid://ynmdl660aoe7" path="res://assets/artifacts/artifact_item_chisato.png" id="7_wprj1"]
 [ext_resource type="Texture2D" uid="uid://d0hewekeskysu" path="res://assets/artifacts/artifact_item_chisato_small.png" id="8_e6mk3"]
+[ext_resource type="Texture2D" uid="uid://cp0xb1fr4u4fa" path="res://assets/artifacts/artifact_item_freddy.png" id="10_oaeai"]
+[ext_resource type="Texture2D" uid="uid://btuitw7yktdk4" path="res://assets/artifacts/artifact_item_freddy_small.png" id="11_yvapc"]
+[ext_resource type="Texture2D" uid="uid://0yr1ypy4wlj6" path="res://assets/artifacts/artifact_item_pot1.png" id="12_pjf8m"]
+[ext_resource type="Texture2D" uid="uid://dcdnsm10esj37" path="res://assets/artifacts/artifact_item_pot1_small.png" id="13_dnfdi"]
+[ext_resource type="Texture2D" uid="uid://ch8ymny6asy7j" path="res://assets/artifacts/artifact_item_pot2.png" id="14_ip78c"]
+[ext_resource type="Texture2D" uid="uid://c571v4p5n0336" path="res://assets/artifacts/artifact_item_pot2_small.png" id="15_t5np0"]
+[ext_resource type="Texture2D" uid="uid://bpoxobhvg682a" path="res://assets/artifacts/artifact_item_purpleguy.png" id="16_t6pnu"]
+[ext_resource type="Texture2D" uid="uid://2wc18y0njiek" path="res://assets/artifacts/artifact_item_purpleguy_small.png" id="17_ecxjj"]
+[ext_resource type="Texture2D" uid="uid://bmlkkajo8syg8" path="res://assets/artifacts/artifact_item_shark.png" id="18_s7bj2"]
+[ext_resource type="Texture2D" uid="uid://y3jyhvjropi1" path="res://assets/artifacts/artifact_item_shark_small.png" id="19_cwrfb"]
+[ext_resource type="Texture2D" uid="uid://dt3jpr3ggyidm" path="res://assets/artifacts/artifact_item_statue1.png" id="20_ganou"]
+[ext_resource type="Texture2D" uid="uid://x58o6u3v1d76" path="res://assets/artifacts/artifact_item_statue1_small.png" id="21_60ttc"]
+[ext_resource type="Texture2D" uid="uid://dagjnudb0ea8" path="res://assets/artifacts/artifact_item_statue2.png" id="22_smdqi"]
+[ext_resource type="Texture2D" uid="uid://b58ngq8wgl1s6" path="res://assets/artifacts/artifact_item_statue2_small.png" id="23_mqigm"]
+[ext_resource type="Texture2D" uid="uid://cjnjbe1k5xm78" path="res://assets/artifacts/artifact_item_sword1.png" id="24_46yet"]
+[ext_resource type="Texture2D" uid="uid://dtbq26jmc4joi" path="res://assets/artifacts/artifact_item_sword1_small.png" id="25_nbd17"]
+[ext_resource type="Texture2D" uid="uid://w5hklfj2a5a3" path="res://assets/artifacts/artifact_item_sword2.png" id="26_nqr2a"]
+[ext_resource type="Texture2D" uid="uid://dxxy6i453083" path="res://assets/artifacts/artifact_item_sword2_small.png" id="27_nsg65"]
+[ext_resource type="PackedScene" uid="uid://08mvj2dn5fl4" path="res://game_objects/portal.tscn" id="30_yvapc"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1ggj3"]
 
@@ -1685,7 +1704,7 @@ occluder = SubResource("OccluderPolygon2D_y1kcb")
 [node name="LightOccluder2D10" type="LightOccluder2D" parent="map/LightOccluders"]
 occluder = SubResource("OccluderPolygon2D_puwqv")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="map"]
+[node name="mapdimmer" type="CanvasModulate" parent="map"]
 color = Color(0.575081, 0.605724, 0.662387, 1)
 
 [node name="artifacts" type="Node2D" parent="map"]
@@ -1698,38 +1717,63 @@ points = 100
 
 [node name="Artifact2" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(224, 1984)
+artifact_texture = ExtResource("10_oaeai")
+mini_artifact_texture = ExtResource("11_yvapc")
 
 [node name="Artifact3" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1488, 1088)
+artifact_texture = ExtResource("12_pjf8m")
+mini_artifact_texture = ExtResource("13_dnfdi")
 
 [node name="Artifact4" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(240, 1648)
+artifact_texture = ExtResource("14_ip78c")
+mini_artifact_texture = ExtResource("15_t5np0")
 
 [node name="Artifact5" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1312, 1944)
+artifact_texture = ExtResource("16_t6pnu")
+mini_artifact_texture = ExtResource("17_ecxjj")
 
 [node name="Artifact6" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1504, 1944)
+artifact_texture = ExtResource("18_s7bj2")
+mini_artifact_texture = ExtResource("19_cwrfb")
 
 [node name="Artifact7" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1696, 1944)
+artifact_texture = ExtResource("20_ganou")
+mini_artifact_texture = ExtResource("21_60ttc")
 
 [node name="Artifact8" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(2592, 928)
+artifact_texture = ExtResource("22_smdqi")
+mini_artifact_texture = ExtResource("23_mqigm")
 
 [node name="Artifact9" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(2272, 1568)
+artifact_texture = ExtResource("24_46yet")
+mini_artifact_texture = ExtResource("25_nbd17")
 
 [node name="Artifact10" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(736, 1952)
+artifact_texture = ExtResource("26_nqr2a")
+mini_artifact_texture = ExtResource("27_nsg65")
 
 [node name="Artifact11" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1504, 2432)
+artifact_texture = ExtResource("14_ip78c")
+mini_artifact_texture = ExtResource("15_t5np0")
 
 [node name="Artifact12" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(2304, 2080)
+artifact_texture = ExtResource("12_pjf8m")
+mini_artifact_texture = ExtResource("13_dnfdi")
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
-position = Vector2(672, 1128)
+position = Vector2(912, 1373)
 script = ExtResource("7_3xhgx")
+
+[node name="Portal" parent="." instance=ExtResource("30_yvapc")]
+z_index = 19
