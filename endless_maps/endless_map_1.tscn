@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=4 uid="uid://3ce7imqslowc"]
+[gd_scene load_steps=161 format=4 uid="uid://3ce7imqslowc"]
 
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="1_8uxuk"]
 [ext_resource type="Script" uid="uid://oscyvgf6yi3h" path="res://endless_maps/endless_map_1.gd" id="1_wprj1"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://w5hklfj2a5a3" path="res://assets/artifacts/artifact_item_sword2.png" id="26_nqr2a"]
 [ext_resource type="Texture2D" uid="uid://dxxy6i453083" path="res://assets/artifacts/artifact_item_sword2_small.png" id="27_nsg65"]
 [ext_resource type="PackedScene" uid="uid://08mvj2dn5fl4" path="res://game_objects/portal.tscn" id="30_yvapc"]
+[ext_resource type="PackedScene" uid="uid://ble0wamj0w0l0" path="res://UI/hud.tscn" id="31_pjf8m"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1ggj3"]
 
@@ -1176,7 +1177,6 @@ script = ExtResource("1_wprj1")
 
 [node name="map" type="Node2D" parent="."]
 visibility_layer = 2
-z_index = 9
 
 [node name="TileMapLayer" type="TileMapLayer" parent="map"]
 z_index = -2
@@ -1719,61 +1719,79 @@ points = 100
 position = Vector2(224, 1984)
 artifact_texture = ExtResource("10_oaeai")
 mini_artifact_texture = ExtResource("11_yvapc")
+points = 100
 
 [node name="Artifact3" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1488, 1088)
 artifact_texture = ExtResource("12_pjf8m")
 mini_artifact_texture = ExtResource("13_dnfdi")
+points = 100
 
 [node name="Artifact4" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(240, 1648)
 artifact_texture = ExtResource("14_ip78c")
 mini_artifact_texture = ExtResource("15_t5np0")
+points = 100
 
 [node name="Artifact5" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1312, 1944)
 artifact_texture = ExtResource("16_t6pnu")
 mini_artifact_texture = ExtResource("17_ecxjj")
+points = 100
 
 [node name="Artifact6" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1504, 1944)
 artifact_texture = ExtResource("18_s7bj2")
 mini_artifact_texture = ExtResource("19_cwrfb")
+points = 100
 
 [node name="Artifact7" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1696, 1944)
 artifact_texture = ExtResource("20_ganou")
 mini_artifact_texture = ExtResource("21_60ttc")
+points = 100
 
 [node name="Artifact8" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(2592, 928)
 artifact_texture = ExtResource("22_smdqi")
 mini_artifact_texture = ExtResource("23_mqigm")
+points = 100
 
 [node name="Artifact9" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(2272, 1568)
 artifact_texture = ExtResource("24_46yet")
 mini_artifact_texture = ExtResource("25_nbd17")
+points = 100
 
 [node name="Artifact10" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(736, 1952)
 artifact_texture = ExtResource("26_nqr2a")
 mini_artifact_texture = ExtResource("27_nsg65")
+points = 100
 
 [node name="Artifact11" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(1504, 2432)
 artifact_texture = ExtResource("14_ip78c")
 mini_artifact_texture = ExtResource("15_t5np0")
+points = 100
 
 [node name="Artifact12" parent="map/artifacts" instance=ExtResource("6_54e7i")]
 position = Vector2(2304, 2080)
 artifact_texture = ExtResource("12_pjf8m")
 mini_artifact_texture = ExtResource("13_dnfdi")
+points = 100
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
+z_index = 0
 position = Vector2(912, 1373)
 script = ExtResource("7_3xhgx")
 
 [node name="Portal" parent="." instance=ExtResource("30_yvapc")]
 z_index = 19
+
+[node name="HUD" parent="." instance=ExtResource("31_pjf8m")]
+
+[connection signal="exit_point_reached" from="Player" to="." method="_on_exit_reached"]
+[connection signal="score_earned" from="Player" to="." method="_on_score_added"]
+[connection signal="spotted" from="Player" to="." method="_on_spotted"]

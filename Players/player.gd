@@ -23,6 +23,7 @@ var gameoverseq := false
 
 ## PLAYER STATES
 var holding_item = null
+var holding_item_score : int
 var running = false
 var invincible := true
 var record = [Vector2()]
@@ -191,7 +192,8 @@ func set_exit_point(point):
 func on_exit_point_reached():
 	
 	if holding_item:
-		score_earned.emit(holding_item.point_value)
+		score_earned.emit(holding_item_score)
+		holding_item_score = 0
 		holding_item = null
 		particles.emitting = false
 	
@@ -216,6 +218,7 @@ func interact_with_closest_artifacts():
 	for artifact in artifacts:
 		if artifact.interact():
 			holding_item = artifact.get_mini_artifact()
+			holding_item_score = artifact.get_points()
 			item_sprite.texture = holding_item
 			soundManager.play_artifact_sound()
 			break

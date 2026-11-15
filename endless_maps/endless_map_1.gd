@@ -1,5 +1,8 @@
 extends Node2D
 
+var playerPast_scene := preload("res://Players/playerPast.tscn")
+
+@onready var hud := $HUD
 @onready var player := $Player
 @onready var artifact_node := $map/artifacts
 @onready var portal := $Portal
@@ -11,18 +14,33 @@ extends Node2D
 	$map/playerspawns/playerspawn5,
 	$map/playerspawns/playerspawn6
 ]
-
 var artifact_list = []
 var target_artifact : Node2D
+var player_spawn : Vector2
+var portal_position : Vector2
+var score : int
+var futures = []
+var past_players = []
+var gameoverseq_started := false
 
 func _ready() -> void:
 	randomize()
+	# generate random spawn
+	player_spawn = spawns[randi_range(0, spawns.size() - 1)].position
 	_new_round()
-	player.exit_point_reached.connect(_on_exit_reached)
 
 func _new_round() -> void:
 	_place_artifact()
 	_place_portal()
+	_spawn_ghosts()
+	_create_player_path()
+	_set_invincibility(true)
+	await get_tree().create_timer(3).timeout
+	_set_invincibility(false)
+
+func _game_over():
+	frame_whole_map()
+	_spawn_ghosts()
 
 #randomly chooses an artifact to collect
 func _place_artifact():
@@ -37,12 +55,88 @@ func _place_artifact():
 
 #randomly places a portal
 func _place_portal() -> void:
-	var randi_portal_position : int = randi_range(0, spawns.size() - 1)
+	portal_position = spawns[randi_range(0, spawns.size() - 1)].position
 	var portal_light := PointLight2D.new()
 	portal.play("default")
-	portal.position = spawns[randi_portal_position].position
-	
+	portal.position = portal_position
+	var t := create_tween().set_loops()
+
+func _create_player_path() -> void:
+	player.start(player_spawn)
+	player.set_exit_point(portal_position)
+	hud.set_waypoint(portal_position)
+
+func _spawn_ghosts() -> void:
+	if player.record.size() > 1:
+		futures.append(player.record)
+	if futures:
+		for past in futures:
+			var past_player_instance := playerPast_scene.instantiate()
+			add_child(past_player_instance)
+			past_player_instance.position = past[0]
+			past_player_instance.set_movement(past.slice(1))
+			#past_player_instance.set_physics_process(false)
+			past_players.append(past_player_instance)
+			past_player_instance.spotted.connect(_on_spotted)
+
+func _remove_ghosts() -> void:
+	for ghost in past_players:
+		if is_instance_valid(ghost):
+			if ghost.is_inside_tree():
+				remove_child(ghost)
+			ghost.queue_free()
+	past_players.clear()
+
+func _set_invincibility(status : bool) -> void:
+	player.set_invincible(status)
+	for p in past_players:
+		p.set_invincible(status)
+
+
+
+
 func _on_exit_reached() -> void:
-	#remove_ghosts()
-	print("end")
+	_remove_ghosts()
+	player_spawn = portal_position
 	_new_round()
+
+func _on_score_added(points) -> void:
+	score += points
+	hud.update_score(score)
+
+func _on_spotted(observer, target) -> void:
+	if observer != player and target != player:
+		return                                    
+	if gameoverseq_started:
+		return                               
+	gameoverseq_started = true
+	
+	player.set_physics_process(false)
+	_remove_ghosts()
+	_game_over()
+
+
+
+
+
+
+func frame_whole_map() -> void:
+	var cam: Camera2D = $Player/Camera2D
+	cam.set_process(false)
+	player.hide()
+	var map_size := Vector2(3008, 2816)
+	var map_center := Vector2(1504, 1408)
+	var vp := get_viewport_rect().size
+	var z: float = min(vp.x / map_size.x, vp.y / map_size.y)
+##------------------------------------------------------------------------------
+	## map bg should be big enough that camera size does not need to be reset---
+##------------------------------------------------------------------------------
+	cam.limit_left = -100000
+	cam.limit_top = -100000
+	cam.limit_right = 100000
+	cam.limit_bottom = 100000
+	
+	# tween camera to zoom out onto the map
+	var t := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(cam, "global_position", map_center, 1.5)
+	t.tween_property(cam, "zoom", Vector2(z, z), 1.5)
