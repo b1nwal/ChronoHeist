@@ -97,8 +97,9 @@ func _remove_ghosts() -> void:
 # takes boolean. sets the invincibility of players and ghosts to true or false
 func _set_invincibility(status : bool) -> void:
 	player.set_invincible(status)
-	for p in past_players:
-		p.set_invincible(status)
+	for past_player in past_players:
+		if is_instance_valid(past_player):
+			past_player.set_invincible(status)
 
 # remove ghosts, randomize portal position, starts new round
 func _on_exit_reached() -> void:
