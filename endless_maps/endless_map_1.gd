@@ -1,7 +1,5 @@
 extends Node2D
-##endless mode. one artifact spawns randomly each round. see how far you can get
-#this also mainly just revamps the code for main map. i want to see opinions and know if its better or wor
-#currently, no round timer
+
 var playerPast_scene := preload("uid://ds72i60gi80dp")
 
 @onready var hud := $HUD
