@@ -107,7 +107,7 @@ animations = [{
 
 [node name="PlayerPast" type="CharacterBody2D"]
 z_index = 2
-collision_mask = 9
+collision_mask = 3
 script = ExtResource("1_om0np")
 metadata/speed = 400
 metadata/_edit_group_ = true
@@ -131,7 +131,7 @@ material = ExtResource("2_qrs7w")
 position = Vector2(2.6226e-06, 1.43051e-06)
 scale = Vector2(2, 1.768)
 sprite_frames = SubResource("SpriteFrames_n48rb")
-animation = &"default_forward"
+animation = &"walk_forward"
 
 [node name="FlashLight" type="PointLight2D" parent="."]
 position = Vector2(3, 0)

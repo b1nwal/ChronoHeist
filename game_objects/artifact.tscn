@@ -50,6 +50,7 @@ texture = ExtResource("2_uci8d")
 
 [node name="PedestalHitbox" type="StaticBody2D" parent="."]
 position = Vector2(0, -44)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PedestalHitbox"]
 z_index = 3
