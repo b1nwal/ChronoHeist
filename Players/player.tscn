@@ -438,7 +438,7 @@ color = Color(0.235294, 0.227451, 0.2, 0.74902)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 8
-collision_mask = 9
+collision_mask = 3
 metadata/speed = 400
 metadata/Mass = 100
 metadata/Friction = 0.2
@@ -485,32 +485,42 @@ z_index = 1
 
 [node name="RayCast2D" type="RayCast2D" parent="Cone"]
 target_position = Vector2(208, -96)
+collision_mask = 3
 
 [node name="RayCast2D2" type="RayCast2D" parent="Cone"]
 target_position = Vector2(224, -80)
+collision_mask = 3
 
 [node name="RayCast2D3" type="RayCast2D" parent="Cone"]
 target_position = Vector2(232, -56)
+collision_mask = 3
 
 [node name="RayCast2D4" type="RayCast2D" parent="Cone"]
 target_position = Vector2(240, -24)
+collision_mask = 3
 
 [node name="RayCast2D5" type="RayCast2D" parent="Cone"]
 target_position = Vector2(248, 0)
+collision_mask = 3
 
 [node name="RayCast2D6" type="RayCast2D" parent="Cone"]
 target_position = Vector2(240, 24)
+collision_mask = 3
 
 [node name="RayCast2D7" type="RayCast2D" parent="Cone"]
 target_position = Vector2(232, 56)
+collision_mask = 3
 
 [node name="RayCast2D8" type="RayCast2D" parent="Cone"]
 target_position = Vector2(224, 80)
+collision_mask = 3
 
 [node name="RayCast2D9" type="RayCast2D" parent="Cone"]
 target_position = Vector2(208, 96)
+collision_mask = 3
 
 [node name="InteractionRange" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
 shape = SubResource("CircleShape2D_ps8ke")

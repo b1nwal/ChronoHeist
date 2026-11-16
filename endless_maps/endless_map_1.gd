@@ -54,19 +54,6 @@ func _new_round() -> void:
 	_set_physics_process(true)
 	round_timer.paused = false
 
-# ends the game and runs the final sequence
-func _game_over():
-	gameoverseq_started = true
-	round_timer.paused = true
-	await get_tree().create_timer(3).timeout
-	_remove_ghosts()
-	frame_whole_map()
-	_spawn_ghosts()
-	_set_physics_process(false)
-	_set_invincibility(true)
-	await get_tree().create_timer(3).timeout
-	_set_physics_process(true)
-
 # randomly chooses an artifact to collect
 func _place_artifact():
 	#hide all artifacts
@@ -81,6 +68,19 @@ func _place_artifact():
 	target_artifact.artifact.show()
 	#set the waypoint
 	hud.set_artifact_waypoint(target_artifact.position)
+
+# ends the game and runs the final sequence
+func _game_over():
+	gameoverseq_started = true
+	round_timer.paused = true
+	await get_tree().create_timer(3).timeout
+	_remove_ghosts()
+	frame_whole_map()
+	_spawn_ghosts()
+	_set_physics_process(false)
+	_set_invincibility(true)
+	await get_tree().create_timer(3).timeout
+	_set_physics_process(true)
 
 # randomly places a portal that is not the player spawn
 func _place_portal() -> void:

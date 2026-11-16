@@ -61,15 +61,16 @@ func _artifact_waypointer():
 	if artifact_waypoint_target == null:
 		artifact_waypoint.hide()
 		return
-	#var viewport_dimensions : Vector2 = get_viewport().get_visible_rect().size
-	#var screen_pos: Vector2 = get_viewport().get_canvas_transform() * artifact_waypoint_target
-	#var screen_center : Vector2 = viewport_dimensions / 2
-	#artifact_waypoint.show()
-	#artifact_waypoint.position = screen_center.clamp(screen_center.position, screen_center.end)
-	
+	var player := get_viewport().get_camera_2d().get_parent() as Node2D
+	var screen_pos: Vector2 = get_viewport().get_canvas_transform() * artifact_waypoint_target
+	var screen_center := get_viewport().get_canvas_transform() * player.global_position
+	artifact_waypoint.show()
+	var position = (screen_center - screen_pos).normalized() * -100
+	artifact_waypoint.position = screen_center + position
 
 func set_artifact_waypoint(pos : Vector2) -> void:
 	artifact_waypoint_target = pos
+	
 
 
 

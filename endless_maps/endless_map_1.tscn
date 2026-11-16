@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=4 uid="uid://3ce7imqslowc"]
+[gd_scene load_steps=198 format=4 uid="uid://3ce7imqslowc"]
 
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="1_8uxuk"]
 [ext_resource type="Script" uid="uid://oscyvgf6yi3h" path="res://endless_maps/endless_map_1.gd" id="1_wprj1"]
@@ -1153,7 +1153,8 @@ polygon = PackedVector2Array(256, 992, 320, 992, 320, 1216, 832, 1216, 832, 1280
 polygon = PackedVector2Array(512, 928, 576, 928, 576, 1088, 512, 1088)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lsqd7"]
-polygon = PackedVector2Array(576, 1536, 576, 1600, 1152, 1600, 1152, 1984, 1088, 1984, 1088, 2048, 1216, 2048, 1216, 2464, 1280, 2464, 1280, 2048, 1728, 2048, 1728, 2464, 1792, 2464, 1792, 2048, 1984, 2048, 1984, 2176, 1856, 2176, 1856, 2240, 2048, 2240, 2048, 1792, 2432, 1792, 2432, 1728, 1984, 1728, 1984, 1984, 1856, 1984, 1856, 1920, 1792, 1920, 1792, 1984, 1216, 1984, 1216, 1600, 1344, 1600, 1344, 1536)
+cull_mode = 1
+polygon = PackedVector2Array(2048, 1792, 2432, 1792, 2432, 1824, 2048, 1824)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j717s"]
 polygon = PackedVector2Array(1568, 2688, 1568, 2752, 1792, 2752, 1792, 2624, 2944, 2624, 2944, 1888, 2880, 1888, 2880, 2176, 2816, 2176, 2816, 2240, 2880, 2240, 2880, 2560, 1728, 2560, 1728, 2688)
@@ -1172,6 +1173,150 @@ polygon = PackedVector2Array(2816, 64, 2816, 128, 2880, 128, 2880, 512, 2816, 51
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_puwqv"]
 polygon = PackedVector2Array(1472, 640, 1536, 640, 1536, 576, 2752, 576, 2752, 512, 2624, 512, 2624, 128, 2752, 128, 2752, 64, 2560, 64, 2560, 512, 1472, 512)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_dnfdi"]
+cull_mode = 2
+polygon = PackedVector2Array(64, 2400, 128, 2400, 128, 2432, 64, 2432)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ip78c"]
+cull_mode = 2
+polygon = PackedVector2Array(1216, 2464, 1280, 2464, 1280, 2496, 1216, 2496)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t5np0"]
+cull_mode = 2
+polygon = PackedVector2Array(1728, 2464, 1792, 2464, 1792, 2496, 1728, 2496)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_t6pnu"]
+cull_mode = 2
+polygon = PackedVector2Array(640, 2272, 640, 2240, 1152, 2240, 1152, 2272)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ecxjj"]
+cull_mode = 2
+polygon = PackedVector2Array(1088, 2080, 1088, 2048, 1216, 2048, 1216, 2080)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s7bj2"]
+cull_mode = 2
+polygon = PackedVector2Array(1280, 2048, 1728, 2048, 1728, 2080, 1280, 2080)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cwrfb"]
+cull_mode = 2
+polygon = PackedVector2Array(1792, 2080, 1792, 2048, 1984, 2048, 1984, 2080)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ganou"]
+cull_mode = 2
+polygon = PackedVector2Array(1856, 2272, 1856, 2240, 2048, 2240, 2048, 2272)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_60ttc"]
+cull_mode = 2
+polygon = PackedVector2Array(2624, 2240, 2752, 2240, 2752, 2272, 2624, 2272)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_smdqi"]
+cull_mode = 2
+polygon = PackedVector2Array(2816, 2240, 2880, 2240, 2880, 2272, 2816, 2272)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mqigm"]
+cull_mode = 2
+polygon = PackedVector2Array(2688, 1792, 2944, 1792, 2944, 1824, 2688, 1824)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_46yet"]
+cull_mode = 2
+polygon = PackedVector2Array(1792, 1824, 1856, 1824, 1856, 1856, 1792, 1856)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nbd17"]
+cull_mode = 2
+polygon = PackedVector2Array(1408, 1600, 1792, 1600, 1792, 1632, 1408, 1632)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nqr2a"]
+cull_mode = 2
+polygon = PackedVector2Array(1216, 1600, 1344, 1600, 1344, 1632, 1216, 1632)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nsg65"]
+cull_mode = 2
+polygon = PackedVector2Array(576, 1600, 1152, 1600, 1152, 1632, 576, 1632)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kgr08"]
+cull_mode = 2
+polygon = PackedVector2Array(128, 1792, 448, 1792, 448, 1824, 128, 1824)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sn7tm"]
+cull_mode = 2
+polygon = PackedVector2Array(512, 1824, 512, 1792, 576, 1792, 576, 1824)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_60jj8"]
+cull_mode = 2
+polygon = PackedVector2Array(256, 1280, 832, 1280, 832, 1312, 256, 1312)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p2lph"]
+cull_mode = 2
+polygon = PackedVector2Array(256, 896, 320, 896, 320, 928, 256, 928)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5pame"]
+cull_mode = 2
+polygon = PackedVector2Array(320, 864, 320, 832, 960, 832, 960, 864)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5wpf3"]
+cull_mode = 2
+polygon = PackedVector2Array(128, 640, 832, 640, 832, 672, 128, 672)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2lawi"]
+cull_mode = 2
+polygon = PackedVector2Array(896, 672, 896, 640, 960, 640, 960, 672)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nypdv"]
+cull_mode = 2
+polygon = PackedVector2Array(896, 1280, 1216, 1280, 1216, 1312, 896, 1312)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_31b6v"]
+cull_mode = 2
+polygon = PackedVector2Array(1280, 1312, 1280, 1280, 1472, 1280, 1472, 1312)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ouxyy"]
+cull_mode = 2
+polygon = PackedVector2Array(1024, 928, 1024, 896, 1792, 896, 1792, 928)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v2uqd"]
+cull_mode = 2
+polygon = PackedVector2Array(1472, 672, 1472, 640, 1536, 640, 1536, 672)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r4w2n"]
+cull_mode = 2
+polygon = PackedVector2Array(1856, 928, 1856, 896, 1984, 896, 1984, 928)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vhtgn"]
+cull_mode = 2
+polygon = PackedVector2Array(1536, 608, 1536, 576, 2752, 576, 2752, 608)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7gmdg"]
+cull_mode = 2
+polygon = PackedVector2Array(1536, 1312, 1536, 1280, 2048, 1280, 2048, 1312)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yt32e"]
+cull_mode = 2
+polygon = PackedVector2Array(2048, 1120, 2048, 1088, 2240, 1088, 2240, 1120)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kbiko"]
+cull_mode = 2
+polygon = PackedVector2Array(2816, 608, 2816, 576, 2880, 576, 2880, 608)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l5shx"]
+cull_mode = 2
+polygon = PackedVector2Array(2304, 1120, 2304, 1088, 2880, 1088, 2880, 1120)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_w43a0"]
+cull_mode = 2
+polygon = PackedVector2Array(2624, 160, 2624, 128, 2752, 128, 2752, 160)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5pmin"]
+cull_mode = 1
+polygon = PackedVector2Array(2496, 1792, 2624, 1792, 2624, 1824, 2496, 1824)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qjc4i"]
+cull_mode = 2
+polygon = PackedVector2Array(2816, 160, 2816, 128, 2880, 128, 2880, 160)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rqsgf"]
+cull_mode = 2
+polygon = PackedVector2Array(512, 1120, 512, 1088, 576, 1088, 576, 1120)
 
 [node name="endless_map_1" type="Node2D"]
 script = ExtResource("1_wprj1")
@@ -1252,6 +1397,7 @@ position = Vector2(2784, 95)
 position = Vector2(1504, 704)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="map"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="map/StaticBody2D"]
 position = Vector2(480, 608)
@@ -1510,7 +1656,7 @@ position = Vector2(864, 544)
 shape = SubResource("RectangleShape2D_l533k")
 
 [node name="rayCollider" type="StaticBody2D" parent="map"]
-collision_layer = 8
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="map/rayCollider"]
 position = Vector2(480, 656)
@@ -1704,6 +1850,114 @@ occluder = SubResource("OccluderPolygon2D_y1kcb")
 [node name="LightOccluder2D10" type="LightOccluder2D" parent="map/LightOccluders"]
 occluder = SubResource("OccluderPolygon2D_puwqv")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_dnfdi")
+
+[node name="LightOccluder2D12" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_ip78c")
+
+[node name="LightOccluder2D13" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_t5np0")
+
+[node name="LightOccluder2D14" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_t6pnu")
+
+[node name="LightOccluder2D31" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_ecxjj")
+
+[node name="LightOccluder2D30" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_s7bj2")
+
+[node name="LightOccluder2D29" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_cwrfb")
+
+[node name="LightOccluder2D28" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_ganou")
+
+[node name="LightOccluder2D27" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_60ttc")
+
+[node name="LightOccluder2D26" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_smdqi")
+
+[node name="LightOccluder2D25" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_mqigm")
+
+[node name="LightOccluder2D24" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_46yet")
+
+[node name="LightOccluder2D23" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_nbd17")
+
+[node name="LightOccluder2D22" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_nqr2a")
+
+[node name="LightOccluder2D21" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_nsg65")
+
+[node name="LightOccluder2D20" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_kgr08")
+
+[node name="LightOccluder2D18" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_sn7tm")
+
+[node name="LightOccluder2D19" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_60jj8")
+
+[node name="LightOccluder2D17" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_p2lph")
+
+[node name="LightOccluder2D16" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_5pame")
+
+[node name="LightOccluder2D15" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_5wpf3")
+
+[node name="LightOccluder2D32" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_2lawi")
+
+[node name="LightOccluder2D33" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_nypdv")
+
+[node name="LightOccluder2D34" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_31b6v")
+
+[node name="LightOccluder2D35" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_ouxyy")
+
+[node name="LightOccluder2D36" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_v2uqd")
+
+[node name="LightOccluder2D37" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_r4w2n")
+
+[node name="LightOccluder2D38" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_vhtgn")
+
+[node name="LightOccluder2D39" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_7gmdg")
+
+[node name="LightOccluder2D40" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_yt32e")
+
+[node name="LightOccluder2D41" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_kbiko")
+
+[node name="LightOccluder2D42" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_l5shx")
+
+[node name="LightOccluder2D43" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_w43a0")
+
+[node name="LightOccluder2D45" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_5pmin")
+
+[node name="LightOccluder2D44" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_qjc4i")
+
+[node name="LightOccluder2D46" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_rqsgf")
+
 [node name="artifacts" type="Node2D" parent="map"]
 position = Vector2(0, 1)
 
@@ -1788,7 +2042,7 @@ one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
-position = Vector2(863, 1753)
+position = Vector2(1928, 2432)
 script = ExtResource("7_3xhgx")
 
 [node name="Portal" parent="." instance=ExtResource("30_yvapc")]

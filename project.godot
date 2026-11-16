@@ -101,10 +101,9 @@ flash={
 
 [layer_names]
 
-2d_render/layer_2="Front_Wall"
-2d_render/layer_3="Player"
-2d_render/layer_4="Back_Wall"
-2d_render/layer_9="Floor"
+2d_render/layer_1="Player"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Walls"
 
 [rendering]
 
