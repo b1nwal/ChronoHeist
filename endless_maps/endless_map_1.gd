@@ -2,6 +2,7 @@ extends Node2D
 
 var playerPast_scene := preload("uid://ds72i60gi80dp")
 
+@onready var round_timer := $map/RoundTimer
 @onready var hud := $HUD
 @onready var player := $Player
 @onready var artifact_node := $map/artifacts
@@ -12,8 +13,8 @@ var playerPast_scene := preload("uid://ds72i60gi80dp")
 	$map/playerspawns/playerspawn3,
 	$map/playerspawns/playerspawn4,
 	$map/playerspawns/playerspawn5,
-	$map/playerspawns/playerspawn6
-]
+	$map/playerspawns/playerspawn6]
+
 var artifact_list = []
 var futures = []
 var past_players = []
@@ -21,7 +22,9 @@ var target_artifact : Node2D
 var player_spawn : Vector2
 var portal_position : Vector2
 var score : int
-var gameoverseq_started := false
+var gameoverseq_started : bool = false
+var white_flash : ColorRect = ColorRect.new()
+var round_number : int = 0
 
 # initializes the game at the very beginning
 func _ready() -> void:
@@ -30,40 +33,61 @@ func _ready() -> void:
 	player_spawn = spawns[randi_range(0, spawns.size() - 1)].position
 	_new_round()
 
+# _process function. handles anything that requires checks over the course of the round
+func _process(delta: float) -> void:
+	hud.update_timer(round_timer.time_left)
+	if round_timer.time_left < 27:
+		_set_invincibility(false)
+
 # calls all the functions in order to start a new round
 func _new_round() -> void:
+	round_number += 1
+	round_timer.start()
+	round_timer.paused = true
 	_place_artifact()
 	_place_portal()
 	_spawn_ghosts()
 	_create_player_path()
+	_set_physics_process(false)
 	_set_invincibility(true)
 	await get_tree().create_timer(3).timeout
-	_set_invincibility(false)
+	_set_physics_process(true)
+	round_timer.paused = false
 
 # ends the game and runs the final sequence
 func _game_over():
-	frame_whole_map()
+	gameoverseq_started = true
+	round_timer.paused = true
 	await get_tree().create_timer(3).timeout
+	_remove_ghosts()
+	frame_whole_map()
 	_spawn_ghosts()
+	_set_physics_process(false)
+	_set_invincibility(true)
+	await get_tree().create_timer(3).timeout
+	_set_physics_process(true)
 
 # randomly chooses an artifact to collect
 func _place_artifact():
+	#hide all artifacts
 	for artifact in artifact_node.get_children():
 		artifact.is_collected = true
 		artifact.artifact.hide()
 		artifact_list.append(artifact)
+	#choose random artifact
 	var randi_artifact : int = randi_range(0, artifact_list.size() - 1)
 	target_artifact = artifact_list[randi_artifact]
 	target_artifact.is_collected = false
 	target_artifact.artifact.show()
+	#set the waypoint
+	hud.set_artifact_waypoint(target_artifact.position)
 
-# randomly places a portal
+# randomly places a portal that is not the player spawn
 func _place_portal() -> void:
 	portal_position = spawns[randi_range(0, spawns.size() - 1)].position
-	var portal_light := PointLight2D.new()
-	portal.play("default")
+	while portal_position == player_spawn:
+		portal_position = spawns[randi_range(0, spawns.size() - 1)].position
 	portal.position = portal_position
-	var t := create_tween().set_loops()
 
 # spawns a player and sets and exit point
 func _create_player_path() -> void:
@@ -81,7 +105,6 @@ func _spawn_ghosts() -> void:
 			add_child(past_player_instance)
 			past_player_instance.position = past[0]
 			past_player_instance.set_movement(past.slice(1))
-			#past_player_instance.set_physics_process(false)
 			past_players.append(past_player_instance)
 			past_player_instance.spotted.connect(_on_spotted)
 
@@ -101,10 +124,17 @@ func _set_invincibility(status : bool) -> void:
 		if is_instance_valid(past_player):
 			past_player.set_invincible(status)
 
+# takes boolean. sets the physics process of players and ghosts to true or false
+func _set_physics_process(status : bool) -> void:
+	player.set_physics_process(status)
+	for past_player in past_players:
+		if is_instance_valid(past_player):
+			past_player.set_physics_process(status)
+
 # remove ghosts, randomize portal position, starts new round
 func _on_exit_reached() -> void:
 	_remove_ghosts()
-	player_spawn = portal_position
+	player_spawn = portal_position   
 	_new_round()
 
 # adds new score
@@ -117,11 +147,13 @@ func _on_spotted(observer, target) -> void:
 	if observer != player and target != player:
 		return                                    
 	if gameoverseq_started:
-		return                               
-	gameoverseq_started = true
-	
-	player.set_physics_process(false)
-	_remove_ghosts()
+		return
+	frame_killer(observer)                               
+	_game_over()
+
+# when the timer runs out, start the game over sequence
+func _on_round_timer_timeout() -> void:
+	frame_killer(player)   
 	_game_over()
 
 
@@ -149,3 +181,30 @@ func frame_whole_map() -> void:
 	var t := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	t.tween_property(cam, "global_position", map_center, 1.5)
 	t.tween_property(cam, "zoom", Vector2(z, z), 1.5)
+	create_tween().tween_property(white_flash, "color:a", 0.0, 2.5)
+
+func frame_killer(observer) -> void:
+	_set_physics_process(false)
+	white_flash.position = Vector2(-5000, 0)
+	white_flash.size = Vector2(10000, 10000)
+	white_flash.color = Color(1, 1, 1, 0)
+	white_flash.z_index = 21
+	observer.z_index = 22
+	player.z_index = 23
+	add_child(white_flash)
+	create_tween().tween_property(white_flash, "color:a", 1.0, 2.5)
+	var cam: Camera2D = $Player/Camera2D
+	cam.set_process(false)
+	var killer_position : Vector2 = observer.position
+##------------------------------------------------------------------------------
+## map bg should be big enough that camera size does not need to be reset
+##------------------------------------------------------------------------------
+	cam.limit_left = -100000
+	cam.limit_top = -100000
+	cam.limit_right = 100000
+	cam.limit_bottom = 100000
+	
+	# tween camera to zoom in on player
+	var t := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	t.tween_property(cam, "global_position", killer_position, 1.5)
+	t.tween_property(cam, "zoom", Vector2(2.7, 2.7), 1.5)

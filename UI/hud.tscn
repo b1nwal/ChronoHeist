@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ble0wamj0w0l0"]
+[gd_scene load_steps=14 format=3 uid="uid://ble0wamj0w0l0"]
 
 [ext_resource type="Script" uid="uid://dbtcp73yh2w0d" path="res://UI/hud.gd" id="1_37p78"]
 [ext_resource type="FontFile" uid="uid://c02uvtj0ncjfu" path="res://font/gbb__.ttf" id="2_b1lf8"]
@@ -12,6 +12,7 @@
 [ext_resource type="FontFile" uid="uid://6ind2jrich3v" path="res://font/press_start_2P.ttf" id="11_phrgc"]
 [ext_resource type="Texture2D" uid="uid://ldf7jq1ppv66" path="res://assets/portals/portal_indicator_top_right.png" id="11_pueji"]
 [ext_resource type="Texture2D" uid="uid://cy7vo1fp4lin2" path="res://assets/portals/portal_indicator_up.png" id="12_4evux"]
+[ext_resource type="Texture2D" uid="uid://btuitw7yktdk4" path="res://assets/artifacts/artifact_item_freddy_small.png" id="13_8nmcf"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -44,22 +45,21 @@ texture = ExtResource("11_pueji")
 [node name="top" type="Sprite2D" parent="Waypoint"]
 texture = ExtResource("12_4evux")
 
-[node name="TimeLabel" type="Label" parent="."]
+[node name="TopTimer" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -30.0
+offset_left = -134.5
 offset_top = 10.0
-offset_right = 30.0
-offset_bottom = 93.0
+offset_right = 165.5
+offset_bottom = 116.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("2_b1lf8")
 theme_override_font_sizes/font_size = 105
-text = "0"
-horizontal_alignment = 2
+text = "00.00"
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 1
@@ -82,7 +82,7 @@ position = Vector2(-41, 19)
 scale = Vector2(3.75, 3.75)
 texture = ExtResource("3_2o5uh")
 
-[node name="CountDownLabel" type="Label" parent="."]
+[node name="MainMiddleLabel" type="Label" parent="."]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,3 +168,9 @@ offset_top = 608.0
 offset_right = 960.0
 offset_bottom = 648.0
 scale = Vector2(2.04154, 2.04154)
+
+[node name="ArtifactWaypoint" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ArtifactWaypoint"]
+scale = Vector2(3, 3)
+texture = ExtResource("13_8nmcf")

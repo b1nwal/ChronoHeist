@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://08mvj2dn5fl4"]
+[gd_scene load_steps=7 format=3 uid="uid://08mvj2dn5fl4"]
 
 [ext_resource type="Texture2D" uid="uid://com23kpi8s6xx" path="res://assets/portals/big_portal1.png" id="1_1m4vp"]
 [ext_resource type="Texture2D" uid="uid://xk2wss46q787" path="res://assets/portals/big_portal2.png" id="2_sbtev"]
 [ext_resource type="Texture2D" uid="uid://bryth6mxhtkj4" path="res://assets/portals/big_portal3.png" id="3_g46pu"]
+[ext_resource type="Script" uid="uid://orw7pm0catkn" path="res://game_objects/portal.gd" id="4_8214u"]
+[ext_resource type="Texture2D" uid="uid://blisvawibrpqs" path="res://assets/lights/point_light_gradient.tres" id="4_kcjig"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_j0kk7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8214u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -21,5 +23,17 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Portal" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_j0kk7")
+[node name="Portal" type="Node2D"]
+script = ExtResource("4_8214u")
+
+[node name="PortalVisual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8214u")
+
+[node name="PointLight2D" type="PointLight2D" parent="PortalVisual"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_kcjig")
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="PortalVisual"]
+event_name = "event:/portl"
+event_guid = "{80400fb2-5f5e-42e2-8ab0-655f1d08d1d8}"
+autoplay = true
