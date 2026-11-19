@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Thief/shadow.png"
+source_file="res://assets/thief/shadow.png"
 dest_files=["res://.godot/imported/shadow.png-53fb665a528d4ece1ad30c440d71deef.ctex"]
 
 [params]
