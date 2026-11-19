@@ -69,7 +69,7 @@ func _artifact_waypointer():
 	artifact_waypoint.position = screen_center + position
 
 func set_artifact_waypoint(pos : Vector2) -> void:
-	artifact_waypoint_target = pos
+	artifact_waypoint_target = pos + Vector2(0, -96)
 	
 
 

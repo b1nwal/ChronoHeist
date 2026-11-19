@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=4 uid="uid://3ce7imqslowc"]
+[gd_scene load_steps=199 format=4 uid="uid://3ce7imqslowc"]
 
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="1_8uxuk"]
 [ext_resource type="Script" uid="uid://oscyvgf6yi3h" path="res://endless_maps/endless_map_1.gd" id="1_wprj1"]
@@ -1318,6 +1318,9 @@ polygon = PackedVector2Array(2816, 160, 2816, 128, 2880, 128, 2880, 160)
 cull_mode = 2
 polygon = PackedVector2Array(512, 1120, 512, 1088, 576, 1088, 576, 1120)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l533k"]
+polygon = PackedVector2Array(576, 1600, 576, 1536, 1344, 1536, 1344, 1600, 1216, 1600, 1216, 1984, 1792, 1984, 1792, 1920, 1856, 1920, 1856, 1984, 1984, 1984, 1984, 1728, 2432, 1728, 2432, 1792, 2048, 1792, 2048, 2240, 1856, 2240, 1856, 2176, 1984, 2176, 1984, 2048, 1792, 2048, 1792, 2464, 1728, 2464, 1728, 2048, 1280, 2048, 1280, 2464, 1216, 2464, 1216, 2048, 1088, 2048, 1088, 1984, 1152, 1984, 1152, 1600, 910.684, 1600)
+
 [node name="endless_map_1" type="Node2D"]
 script = ExtResource("1_wprj1")
 
@@ -1958,6 +1961,9 @@ occluder = SubResource("OccluderPolygon2D_qjc4i")
 [node name="LightOccluder2D46" type="LightOccluder2D" parent="map/LightOccluders"]
 occluder = SubResource("OccluderPolygon2D_rqsgf")
 
+[node name="LightOccluder2D47" type="LightOccluder2D" parent="map/LightOccluders"]
+occluder = SubResource("OccluderPolygon2D_l533k")
+
 [node name="artifacts" type="Node2D" parent="map"]
 position = Vector2(0, 1)
 
@@ -2042,7 +2048,7 @@ one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
-position = Vector2(1928, 2432)
+position = Vector2(1344, 1760)
 script = ExtResource("7_3xhgx")
 
 [node name="Portal" parent="." instance=ExtResource("30_yvapc")]

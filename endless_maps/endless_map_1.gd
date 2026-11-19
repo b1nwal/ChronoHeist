@@ -5,32 +5,25 @@ var playerPast_scene := preload("uid://ds72i60gi80dp")
 @onready var round_timer := $map/RoundTimer
 @onready var hud := $HUD
 @onready var player := $Player
-@onready var artifact_node := $map/artifacts
+@onready var artifact_nodes := $map/artifacts
+@onready var spawn_nodes := $map/playerspawns
 @onready var portal := $Portal
-@onready var spawns := [
-	$map/playerspawns/playerspawn,
-	$map/playerspawns/playerspawn2,
-	$map/playerspawns/playerspawn3,
-	$map/playerspawns/playerspawn4,
-	$map/playerspawns/playerspawn5,
-	$map/playerspawns/playerspawn6]
-
-var artifact_list = []
+var spawns : Array[Marker2D] = []
+var artifacts : Array[Artifact] = []
 var futures = []
-var past_players = []
+var past_players : Array[PastPlayer] = []
 var target_artifact : Node2D
 var player_spawn : Vector2
 var portal_position : Vector2
 var score : int
-var gameoverseq_started : bool = false
-var white_flash : ColorRect = ColorRect.new()
+var game_over_sequence_started : bool = false
 var round_number : int = 0
+var white_flash : ColorRect = ColorRect.new()
 
 # initializes the game at the very beginning
 func _ready() -> void:
 	randomize()
-	# generate random spawn
-	player_spawn = spawns[randi_range(0, spawns.size() - 1)].position
+	_initialize_spawns()
 	_new_round()
 
 # _process function. handles anything that requires checks over the course of the round
@@ -41,6 +34,7 @@ func _process(delta: float) -> void:
 
 # calls all the functions in order to start a new round
 func _new_round() -> void:
+	player.get_node("playerSounds").play_reset_sound()
 	round_number += 1
 	round_timer.start()
 	round_timer.paused = true
@@ -54,16 +48,22 @@ func _new_round() -> void:
 	_set_physics_process(true)
 	round_timer.paused = false
 
+#place spawns into array and pick a random one
+func _initialize_spawns():
+	for spawn in spawn_nodes.get_children():
+		spawns.append(spawn)
+	player_spawn = spawns[randi_range(0, spawns.size() - 1)].position
+
 # randomly chooses an artifact to collect
 func _place_artifact():
 	#hide all artifacts
-	for artifact in artifact_node.get_children():
+	for artifact in artifact_nodes.get_children():
 		artifact.is_collected = true
 		artifact.artifact.hide()
-		artifact_list.append(artifact)
+		artifacts.append(artifact)
 	#choose random artifact
-	var randi_artifact : int = randi_range(0, artifact_list.size() - 1)
-	target_artifact = artifact_list[randi_artifact]
+	var randi_artifact : int = randi_range(0, artifacts.size() - 1)
+	target_artifact = artifacts[randi_artifact]
 	target_artifact.is_collected = false
 	target_artifact.artifact.show()
 	#set the waypoint
@@ -71,7 +71,7 @@ func _place_artifact():
 
 # ends the game and runs the final sequence
 func _game_over():
-	gameoverseq_started = true
+	game_over_sequence_started = true
 	round_timer.paused = true
 	await get_tree().create_timer(3).timeout
 	_remove_ghosts()
@@ -146,7 +146,7 @@ func _on_score_added(points) -> void:
 func _on_spotted(observer, target) -> void:
 	if observer != player and target != player:
 		return                                    
-	if gameoverseq_started:
+	if game_over_sequence_started:
 		return
 	frame_killer(observer)                               
 	_game_over()
@@ -182,6 +182,8 @@ func frame_whole_map() -> void:
 	t.tween_property(cam, "global_position", map_center, 1.5)
 	t.tween_property(cam, "zoom", Vector2(z, z), 1.5)
 	create_tween().tween_property(white_flash, "color:a", 0.0, 2.5)
+	create_tween().tween_property($map/mapdimmer, "color", Color("939aa9"), 2.5)
+	
 
 func frame_killer(observer) -> void:
 	_set_physics_process(false)
@@ -193,6 +195,7 @@ func frame_killer(observer) -> void:
 	player.z_index = 23
 	add_child(white_flash)
 	create_tween().tween_property(white_flash, "color:a", 1.0, 2.5)
+	create_tween().tween_property($map/mapdimmer, "color", Color("ffffff"), 2.5)
 	var cam: Camera2D = $Player/Camera2D
 	cam.set_process(false)
 	var killer_position : Vector2 = observer.position
