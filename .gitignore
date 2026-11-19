@@ -1,5 +1,12 @@
-# Godot 4+ specific ignores
+# Godot-generated cache and import outputs
 .godot/
+*.translation
+
+# Platform/editor temporary files
+.DS_Store
+*.af~lock~
+
+# Project-specific generated outputs
 /android/
 *.tmp
-addons/fmod/libs/windows/~libGodotFmod.windows.editor.x86_64.dll
+addons/fmod/libs/windows/~*.dll
