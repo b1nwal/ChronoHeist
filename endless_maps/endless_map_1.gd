@@ -211,3 +211,11 @@ func frame_killer(observer) -> void:
 	var t := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	t.tween_property(cam, "global_position", killer_position, 1.5)
 	t.tween_property(cam, "zoom", Vector2(2.7, 2.7), 1.5)
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if game_over_sequence_started == true: 
+		if event is InputEventKey and event.pressed and not event.echo:
+			if event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
+				get_tree().change_scene_to_file("uid://7elayt2y1mgn")
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
