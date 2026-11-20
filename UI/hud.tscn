@@ -174,3 +174,11 @@ scale = Vector2(2.04154, 2.04154)
 [node name="Sprite2D" type="Sprite2D" parent="ArtifactWaypoint"]
 scale = Vector2(3, 3)
 texture = ExtResource("13_8nmcf")
+
+[node name="ContinueButton" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 1006.0
+offset_right = 462.0
+offset_bottom = 1065.0
+theme_override_font_sizes/font_size = 40
+text = "Press Enter to continue"
