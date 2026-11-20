@@ -176,6 +176,7 @@ scale = Vector2(3, 3)
 texture = ExtResource("13_8nmcf")
 
 [node name="ContinueButton" type="Label" parent="."]
+visible = false
 offset_left = 12.0
 offset_top = 1006.0
 offset_right = 462.0

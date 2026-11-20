@@ -8,6 +8,7 @@ var playerPast_scene := preload("uid://ds72i60gi80dp")
 @onready var artifact_nodes := $map/artifacts
 @onready var spawn_nodes := $map/playerspawns
 @onready var portal := $Portal
+
 var spawns : Array[Marker2D]
 var artifacts : Array[Artifact]
 var futures : Array[Array]
