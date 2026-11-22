@@ -95,7 +95,7 @@ func update_ready(message):
 
 func update_timer(time : float):
 	top_timer.text = str("%.2f" % time)
-	if time <= 10:
+	if time <= 11:
 		top_timer.add_theme_color_override("font_color", Color(255, 0, 0))
 		top_timer.add_theme_color_override("font_outline_color", Color(255, 255, 255))
 	else:
