@@ -12,7 +12,7 @@
 [ext_resource type="FontFile" uid="uid://6ind2jrich3v" path="res://font/press_start_2P.ttf" id="11_phrgc"]
 [ext_resource type="Texture2D" uid="uid://ldf7jq1ppv66" path="res://assets/portals/portal_indicator_top_right.png" id="11_pueji"]
 [ext_resource type="Texture2D" uid="uid://cy7vo1fp4lin2" path="res://assets/portals/portal_indicator_up.png" id="12_4evux"]
-[ext_resource type="Texture2D" uid="uid://btuitw7yktdk4" path="res://assets/artifacts/artifact_item_freddy_small.png" id="13_8nmcf"]
+[ext_resource type="Texture2D" uid="uid://0np8awtgwp2i" path="res://assets/portals/artifact_indicator.png" id="13_8nmcf"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -172,7 +172,7 @@ scale = Vector2(2.04154, 2.04154)
 [node name="ArtifactWaypoint" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ArtifactWaypoint"]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 texture = ExtResource("13_8nmcf")
 
 [node name="ContinueButton" type="Label" parent="."]

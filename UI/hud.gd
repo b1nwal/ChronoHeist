@@ -29,22 +29,23 @@ func _portal_waypointer():
 	if portal_waypoint_target == null:
 		waypoint.hide()
 		return
-	
-	var screen_pos: Vector2 = get_viewport().get_canvas_transform() * portal_waypoint_target
-	var safe := get_viewport().get_visible_rect().grow(-WAYPOINT_MARGIN)
+	var camera_coord_world := get_viewport().get_camera_2d().get_canvas_transform()
+	var player_pos : Vector2 = get_viewport().get_camera_2d().get_parent().global_position
+	var portal_screen_pos : Vector2 = camera_coord_world * portal_waypoint_target
+	var inner_space := get_viewport().get_visible_rect().grow(-WAYPOINT_MARGIN)
 	 
-	if safe.has_point(screen_pos):
+	if inner_space.has_point(portal_screen_pos):
 		waypoint.hide()
 		return
 	
 	waypoint.show()
-	waypoint.position = screen_pos.clamp(safe.position, safe.end)
+	waypoint.position = portal_screen_pos.clamp(inner_space.position, inner_space.end)
 	
 	var p := waypoint.position
-	var on_left   := p.x <= safe.position.x
-	var on_right  := p.x >= safe.end.x
-	var on_top    := p.y <= safe.position.y
-	var on_bottom := p.y >= safe.end.y
+	var on_left   := p.x <= inner_space.position.x
+	var on_right  := p.x >= inner_space.end.x
+	var on_top    := p.y <= inner_space.position.y
+	var on_bottom := p.y >= inner_space.end.y
 	
 	for s in waypoint.get_children():
 		s.hide()
@@ -67,7 +68,9 @@ func _artifact_waypointer():
 	var player_pos : Vector2 = get_viewport().get_camera_2d().get_parent().global_position
 	var player_screen_pos : Vector2 = camera_coord_world * player_pos
 	var artifact_screen_pos : Vector2 = camera_coord_world * artifact_waypoint_target
-	artifact_waypoint.position = (artifact_screen_pos - player_screen_pos).normalized() * 100 + player_screen_pos
+	var waypoint_rotation : Vector2 = (artifact_screen_pos - player_screen_pos).normalized()
+	artifact_waypoint.rotation = waypoint_rotation.angle() + 44.85
+	artifact_waypoint.position = waypoint_rotation * 100 + player_screen_pos
 
 func set_artifact_waypoint(pos : Vector2) -> void:
 	artifact_waypoint_target = pos + Vector2(0, -96)
