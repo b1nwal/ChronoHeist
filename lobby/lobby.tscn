@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://d0gfo2g0kaye3" path="res://assets/map_background/decor_tiles.png" id="6_8v3m6"]
 [ext_resource type="PackedScene" uid="uid://08mvj2dn5fl4" path="res://game_objects/portal.tscn" id="6_qfux7"]
 [ext_resource type="PackedScene" uid="uid://3ce7imqslowc" path="res://endless_maps/endless_map_1.tscn" id="8_8367x"]
-[ext_resource type="PackedScene" uid="uid://bsakyl1dkxxb8" path="res://main/main.tscn" id="9_8v3m6"]
 [ext_resource type="FontFile" uid="uid://c02uvtj0ncjfu" path="res://font/gbb__.ttf" id="9_8367x"]
+[ext_resource type="PackedScene" path="uid://bwh81e3ht8tv0" id="10_8v3m6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pkrdv"]
 
@@ -356,5 +356,5 @@ metadata/name = "ENDLESS"
 
 [node name="NotEndless" parent="LevelSelect" instance=ExtResource("6_qfux7")]
 position = Vector2(1502, 1157)
-metadata/scene = ExtResource("9_8v3m6")
+metadata/scene = ExtResource("10_8v3m6")
 metadata/name = "LEVEL 1"
