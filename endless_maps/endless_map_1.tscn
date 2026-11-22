@@ -1153,7 +1153,7 @@ polygon = PackedVector2Array(256, 992, 320, 992, 320, 1216, 832, 1216, 832, 1280
 polygon = PackedVector2Array(512, 928, 576, 928, 576, 1088, 512, 1088)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lsqd7"]
-cull_mode = 1
+cull_mode = 2
 polygon = PackedVector2Array(2048, 1792, 2432, 1792, 2432, 1824, 2048, 1824)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j717s"]
@@ -1307,7 +1307,7 @@ cull_mode = 2
 polygon = PackedVector2Array(2624, 160, 2624, 128, 2752, 128, 2752, 160)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5pmin"]
-cull_mode = 1
+cull_mode = 2
 polygon = PackedVector2Array(2496, 1792, 2624, 1792, 2624, 1824, 2496, 1824)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qjc4i"]
@@ -1890,6 +1890,7 @@ occluder = SubResource("OccluderPolygon2D_mqigm")
 occluder = SubResource("OccluderPolygon2D_46yet")
 
 [node name="LightOccluder2D23" type="LightOccluder2D" parent="map/LightOccluders"]
+position = Vector2(0, -1)
 occluder = SubResource("OccluderPolygon2D_nbd17")
 
 [node name="LightOccluder2D22" type="LightOccluder2D" parent="map/LightOccluders"]
@@ -2048,7 +2049,7 @@ one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
-position = Vector2(1344, 1760)
+position = Vector2(2176, 1944)
 script = ExtResource("7_3xhgx")
 
 [node name="Portal" parent="." instance=ExtResource("30_yvapc")]

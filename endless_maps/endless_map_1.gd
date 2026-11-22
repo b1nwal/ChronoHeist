@@ -8,10 +8,11 @@ var playerPast_scene := preload("uid://ds72i60gi80dp")
 @onready var artifact_nodes := $map/artifacts
 @onready var spawn_nodes := $map/playerspawns
 @onready var portal := $Portal
-var spawns : Array[Marker2D] = []
-var artifacts : Array[Artifact] = []
-var futures = []
-var past_players : Array[PastPlayer] = []
+
+var spawns : Array[Marker2D]
+var artifacts : Array[Artifact]
+var futures : Array[Array]
+var past_players : Array[PastPlayer]
 var target_artifact : Node2D
 var player_spawn : Vector2
 var portal_position : Vector2
@@ -74,13 +75,15 @@ func _game_over():
 	game_over_sequence_started = true
 	round_timer.paused = true
 	await get_tree().create_timer(3).timeout
-	_remove_ghosts()
 	frame_whole_map()
-	_spawn_ghosts()
-	_set_physics_process(false)
-	_set_invincibility(true)
-	await get_tree().create_timer(3).timeout
-	_set_physics_process(true)
+	while game_over_sequence_started:
+		_remove_ghosts()
+		_spawn_ghosts()
+		_set_invincibility(true)
+		_set_physics_process(false)
+		await get_tree().create_timer(3).timeout
+		_set_physics_process(true)
+		await get_tree().create_timer(30).timeout
 
 # randomly places a portal that is not the player spawn
 func _place_portal() -> void:
