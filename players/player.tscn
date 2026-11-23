@@ -452,6 +452,7 @@ texture = ExtResource("1_tintf")
 offset = Vector2(-0.5, -9)
 
 [node name="ParticleEffect" type="AnimatedSprite2D" parent="."]
+visible = false
 z_index = 11
 position = Vector2(1, -1)
 scale = Vector2(2, 2)
