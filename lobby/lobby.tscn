@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=4 uid="uid://7elayt2y1mgn"]
 
-[ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://Players/player.gd" id="2_mnguq"]
-[ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://Players/player.tscn" id="2_uj4ub"]
+[ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://players/player.gd" id="2_mnguq"]
+[ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://players/player.tscn" id="2_uj4ub"]
 [ext_resource type="Texture2D" uid="uid://dv4pv0pe0hxf7" path="res://assets/map_background/map-temp-background.png" id="4_8367x"]
 [ext_resource type="Texture2D" uid="uid://d0q6bcr1vyxxl" path="res://assets/lobby/lobby_tileset.png" id="5_8367x"]
 [ext_resource type="Script" uid="uid://teoiv4sjm0jj" path="res://lobby/lobby.gd" id="6_4veey"]
