@@ -1,4 +1,4 @@
-[gd_scene load_steps=199 format=4 uid="uid://3ce7imqslowc"]
+[gd_scene load_steps=200 format=4 uid="uid://3ce7imqslowc"]
 
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="1_8uxuk"]
 [ext_resource type="Script" uid="uid://oscyvgf6yi3h" path="res://endless_maps/endless_map_1.gd" id="1_wprj1"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://w5hklfj2a5a3" path="res://assets/artifacts/artifact_item_sword2.png" id="26_nqr2a"]
 [ext_resource type="Texture2D" uid="uid://dxxy6i453083" path="res://assets/artifacts/artifact_item_sword2_small.png" id="27_nsg65"]
 [ext_resource type="PackedScene" uid="uid://08mvj2dn5fl4" path="res://game_objects/portal.tscn" id="30_yvapc"]
+[ext_resource type="PackedScene" uid="uid://d0pl01us022js" path="res://UI/main_camera.tscn" id="31_ip78c"]
 [ext_resource type="PackedScene" uid="uid://ble0wamj0w0l0" path="res://UI/hud.tscn" id="31_pjf8m"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1ggj3"]
@@ -2052,11 +2053,15 @@ visibility_layer = 4
 position = Vector2(2176, 1944)
 script = ExtResource("7_3xhgx")
 
+[node name="MainCamera" parent="Player" instance=ExtResource("31_ip78c")]
+position = Vector2(-2176, -1944)
+
 [node name="Portal" parent="." instance=ExtResource("30_yvapc")]
 
 [node name="HUD" parent="." instance=ExtResource("31_pjf8m")]
 
 [connection signal="timeout" from="map/RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="exit_point_reached" from="Player" to="." method="_on_exit_reached"]
+[connection signal="picked_up_artifact" from="Player" to="." method="_on_player_picked_up_artifact"]
 [connection signal="score_earned" from="Player" to="." method="_on_score_added"]
 [connection signal="spotted" from="Player" to="." method="_on_spotted"]

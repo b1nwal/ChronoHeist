@@ -5,6 +5,7 @@ signal score_earned(amount)
 signal exit_point_reached()
 signal spotted(observer, target)
 signal proximal_to_artifact(truth)
+signal picked_up_artifact()
 
 const PIXELS_PER_METRE = 100
 
@@ -221,4 +222,5 @@ func interact_with_closest_artifacts():
 			holding_item_score = artifact.get_points()
 			item_sprite.texture = holding_item
 			soundManager.play_artifact_sound()
+			picked_up_artifact.emit()
 			break
