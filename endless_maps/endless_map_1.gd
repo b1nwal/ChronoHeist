@@ -49,6 +49,7 @@ func _new_round() -> void:
 	_set_invincibility(true)
 	await get_tree().create_timer(3).timeout
 	_set_physics_process(true)
+	player.animate_invicibility()
 	round_timer.paused = false
 
 #place spawns into array and pick a random one
