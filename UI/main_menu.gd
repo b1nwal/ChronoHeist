@@ -1,6 +1,7 @@
 extends Control
 
 const GAME_SCENE = preload("uid://3ce7imqslowc")
+const LOBBY_SCENE = preload("uid://7elayt2y1mgn")
 @onready var music = MainAudio.get_node("Music")
 @onready var UI_audio = MainAudio.get_node("UI")
 
@@ -13,7 +14,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
 			music.release_intro()
 			UI_audio.play_start()
-			get_tree().change_scene_to_packed(GAME_SCENE)
+			get_tree().change_scene_to_packed(LOBBY_SCENE)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
