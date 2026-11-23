@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ble0wamj0w0l0"]
+[gd_scene load_steps=15 format=3 uid="uid://ble0wamj0w0l0"]
 
 [ext_resource type="Script" uid="uid://dbtcp73yh2w0d" path="res://UI/hud.gd" id="1_37p78"]
 [ext_resource type="FontFile" uid="uid://c02uvtj0ncjfu" path="res://font/gbb__.ttf" id="2_b1lf8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ldf7jq1ppv66" path="res://assets/portals/portal_indicator_top_right.png" id="11_pueji"]
 [ext_resource type="Texture2D" uid="uid://cy7vo1fp4lin2" path="res://assets/portals/portal_indicator_up.png" id="12_4evux"]
 [ext_resource type="Texture2D" uid="uid://0np8awtgwp2i" path="res://assets/portals/artifact_indicator.png" id="13_8nmcf"]
+[ext_resource type="Texture2D" uid="uid://bhh7xq8r5o3fk" path="res://assets/hud_ui/e_button.png" id="13_sab3h"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -162,12 +163,12 @@ text = "bruh"
 vertical_alignment = 2
 
 [node name="E_Indicator" type="TextureRect" parent="."]
-visible = false
 offset_left = 920.0
 offset_top = 608.0
 offset_right = 960.0
 offset_bottom = 648.0
 scale = Vector2(2.04154, 2.04154)
+texture = ExtResource("13_sab3h")
 
 [node name="ArtifactWaypoint" type="Marker2D" parent="."]
 
