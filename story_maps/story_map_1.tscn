@@ -28,8 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://dtbq26jmc4joi" path="res://assets/artifacts/artifact_item_sword1_small.png" id="26_id2o7"]
 [ext_resource type="Texture2D" uid="uid://w5hklfj2a5a3" path="res://assets/artifacts/artifact_item_sword2.png" id="27_aq3wc"]
 [ext_resource type="Texture2D" uid="uid://dxxy6i453083" path="res://assets/artifacts/artifact_item_sword2_small.png" id="28_p5cu1"]
-[ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://Players/player.tscn" id="29_wm0vo"]
-[ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://Players/player.gd" id="30_m3mdj"]
+[ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://players/player.tscn" id="29_wm0vo"]
+[ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://players/player.gd" id="30_m3mdj"]
 [ext_resource type="PackedScene" uid="uid://08mvj2dn5fl4" path="res://game_objects/portal.tscn" id="31_7yyk3"]
 [ext_resource type="PackedScene" uid="uid://ble0wamj0w0l0" path="res://UI/hud.tscn" id="32_i31ij"]
 
