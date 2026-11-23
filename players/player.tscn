@@ -45,7 +45,6 @@
 [ext_resource type="Texture2D" uid="uid://cp7b8yi4lvrdj" path="res://assets/particles/particle_effects20.png" id="20_fc3b3"]
 [ext_resource type="Texture2D" uid="uid://b065jvsesdb7e" path="res://assets/thief/holding_artifact/thief_side_left_holding_small2.png" id="21_4l5xh"]
 [ext_resource type="Texture2D" uid="uid://byfjw2oakafpy" path="res://assets/particles/particle_effects21.png" id="21_e3gaa"]
-[ext_resource type="Script" uid="uid://bipnx7p5s1amy" path="res://UI/camera.gd" id="21_tintf"]
 [ext_resource type="Texture2D" uid="uid://cu7522gkm636e" path="res://assets/thief/holding_artifact/thief_side_left_holding_small3.png" id="22_2ggna"]
 [ext_resource type="Texture2D" uid="uid://btgxu3gob28fi" path="res://assets/particles/particle_effects22.png" id="22_fjrxw"]
 [ext_resource type="Texture2D" uid="uid://377xapsjvqhv" path="res://assets/lights/flashlight.png" id="22_tintf"]
