@@ -18,7 +18,9 @@ extends CanvasLayer
 @onready var main_middle_label : Label = $MainMiddleLabel
 
 const WAYPOINT_MARGIN := 96.0
-var portal_waypoint_target = null
+var show_portal_waypoint : bool = false
+var show_artifact_waypoint : bool = false
+var portal_waypoint_target : Vector2
 var artifact_waypoint_target : Vector2 
 
 func _process(delta: float) -> void:
@@ -26,7 +28,7 @@ func _process(delta: float) -> void:
 	_artifact_waypointer()
 
 func _portal_waypointer():
-	if portal_waypoint_target == null:
+	if show_portal_waypoint == false:
 		waypoint.hide()
 		return
 	var camera_coord_world := get_viewport().get_camera_2d().get_canvas_transform()
@@ -59,11 +61,10 @@ func _portal_waypointer():
 	else:                        waypointB.show()
 
 func _artifact_waypointer():
-	if artifact_waypoint_target == null:
+	if show_artifact_waypoint == false:
 		artifact_waypoint.hide()
 		return
 	artifact_waypoint.show()
-	
 	var camera_coord_world := get_viewport().get_camera_2d().get_canvas_transform()
 	var player_pos : Vector2 = get_viewport().get_camera_2d().get_parent().global_position
 	var player_screen_pos : Vector2 = camera_coord_world * player_pos
