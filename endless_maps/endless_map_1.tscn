@@ -40,7 +40,7 @@ diffuse_texture = ExtResource("1_8uxuk")
 normal_texture = ExtResource("2_souej")
 specular_texture = ExtResource("3_56a1s")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4t3ps"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnfdi"]
 texture = SubResource("CanvasTexture_efxa6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -94,9 +94,9 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_54e7i"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_4t3ps")
+sources/0 = SubResource("TileSetAtlasSource_dnfdi")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wprj1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ip78c"]
 texture = ExtResource("1_8uxuk")
 0:0/0 = 0
 1:0/0 = 0
@@ -538,9 +538,9 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "Terrain 0"
 terrain_set_1/terrain_0/color = Color(0.473413, 0.322441, 0.481195, 1)
-sources/0 = SubResource("TileSetAtlasSource_wprj1")
+sources/0 = SubResource("TileSetAtlasSource_ip78c")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v7evt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t5np0"]
 texture = ExtResource("4_3xhgx")
 0:0/0 = 0
 1:0/0 = 0
@@ -765,7 +765,7 @@ terrain_set_0/terrain_0/color = Color(0.251978, 0.399053, 0.532526, 1)
 terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "Terrain 0"
 terrain_set_1/terrain_0/color = Color(0.472463, 0.229202, 0.727271, 1)
-sources/0 = SubResource("TileSetAtlasSource_v7evt")
+sources/0 = SubResource("TileSetAtlasSource_t5np0")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_82xsv"]
 polygon = PackedVector2Array(-10.8334, -9.24029, 10.914, -9.5434, 10.2033, -15.1273, -10.5079, -14.9243)
@@ -782,7 +782,7 @@ polygon = PackedVector2Array(-10.8334, -9.24029, 10.914, -9.5434, 10.2033, -15.1
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_efxa6"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, -11.4707, -16, -6.37262)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gl4yr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t6pnu"]
 texture = ExtResource("4_3xhgx")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
@@ -829,7 +829,7 @@ tile_size = Vector2i(32, 32)
 uv_clipping = true
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_gl4yr")
+sources/0 = SubResource("TileSetAtlasSource_t6pnu")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_souej"]
 size = Vector2(704, 64)
@@ -1153,7 +1153,7 @@ polygon = PackedVector2Array(256, 992, 320, 992, 320, 1216, 832, 1216, 832, 1280
 polygon = PackedVector2Array(512, 928, 576, 928, 576, 1088, 512, 1088)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lsqd7"]
-cull_mode = 1
+cull_mode = 2
 polygon = PackedVector2Array(2048, 1792, 2432, 1792, 2432, 1824, 2048, 1824)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_j717s"]
@@ -1307,7 +1307,7 @@ cull_mode = 2
 polygon = PackedVector2Array(2624, 160, 2624, 128, 2752, 128, 2752, 160)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5pmin"]
-cull_mode = 1
+cull_mode = 2
 polygon = PackedVector2Array(2496, 1792, 2624, 1792, 2624, 1824, 2496, 1824)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qjc4i"]
@@ -1890,6 +1890,7 @@ occluder = SubResource("OccluderPolygon2D_mqigm")
 occluder = SubResource("OccluderPolygon2D_46yet")
 
 [node name="LightOccluder2D23" type="LightOccluder2D" parent="map/LightOccluders"]
+position = Vector2(0, -1)
 occluder = SubResource("OccluderPolygon2D_nbd17")
 
 [node name="LightOccluder2D22" type="LightOccluder2D" parent="map/LightOccluders"]
@@ -2048,7 +2049,7 @@ one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
-position = Vector2(1344, 1760)
+position = Vector2(2176, 1944)
 script = ExtResource("7_3xhgx")
 
 [node name="Portal" parent="." instance=ExtResource("30_yvapc")]

@@ -8,10 +8,11 @@ var playerPast_scene := preload("uid://ds72i60gi80dp")
 @onready var artifact_nodes := $map/artifacts
 @onready var spawn_nodes := $map/playerspawns
 @onready var portal := $Portal
-var spawns : Array[Marker2D] = []
-var artifacts : Array[Artifact] = []
-var futures = []
-var past_players : Array[PastPlayer] = []
+
+var spawns : Array[Marker2D]
+var artifacts : Array[Artifact]
+var futures : Array[Array]
+var past_players : Array[PastPlayer]
 var target_artifact : Node2D
 var player_spawn : Vector2
 var portal_position : Vector2
@@ -74,13 +75,15 @@ func _game_over():
 	game_over_sequence_started = true
 	round_timer.paused = true
 	await get_tree().create_timer(3).timeout
-	_remove_ghosts()
 	frame_whole_map()
-	_spawn_ghosts()
-	_set_physics_process(false)
-	_set_invincibility(true)
-	await get_tree().create_timer(3).timeout
-	_set_physics_process(true)
+	while game_over_sequence_started:
+		_remove_ghosts()
+		_spawn_ghosts()
+		_set_invincibility(true)
+		_set_physics_process(false)
+		await get_tree().create_timer(3).timeout
+		_set_physics_process(true)
+		await get_tree().create_timer(30).timeout
 
 # randomly places a portal that is not the player spawn
 func _place_portal() -> void:
@@ -211,3 +214,11 @@ func frame_killer(observer) -> void:
 	var t := create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	t.tween_property(cam, "global_position", killer_position, 1.5)
 	t.tween_property(cam, "zoom", Vector2(2.7, 2.7), 1.5)
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if game_over_sequence_started == true: 
+		if event is InputEventKey and event.pressed and not event.echo:
+			if event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
+				get_tree().change_scene_to_file("uid://7elayt2y1mgn")
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
