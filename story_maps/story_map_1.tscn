@@ -1,4 +1,4 @@
-[gd_scene load_steps=199 format=4 uid="uid://bwh81e3ht8tv0"]
+[gd_scene load_steps=199 format=4 uid="uid://bkx2mj2s46q5v"]
 
 [ext_resource type="Script" uid="uid://bnpho2bx12yg6" path="res://story_maps/story_map_1.gd" id="1_adlde"]
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="2_icdb2"]
