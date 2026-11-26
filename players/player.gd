@@ -5,6 +5,7 @@ signal score_earned(amount)
 signal exit_point_reached()
 signal spotted(observer, target)
 signal proximal_to_artifact(truth)
+signal picked_up_artifact()
 
 const PIXELS_PER_METRE = 100
 
@@ -104,7 +105,18 @@ func _physics_process(delta: float) -> void:
 			proximal_to_artifact.emit(true)
 		else:
 			proximal_to_artifact.emit(false)
-			
+
+func animate_invicibility() -> void:
+	var time_elapsed_1 : = get_tree().create_timer(1.5)
+	while time_elapsed_1.time_left > 0:
+		await get_tree().create_timer(0.02).timeout
+		animated_sprite.visible = not animated_sprite.visible
+	var time_elapsed_2 : = get_tree().create_timer(1.5)
+	while time_elapsed_2.time_left > 0:
+		await get_tree().create_timer(0.01).timeout
+		animated_sprite.visible = not animated_sprite.visible
+	animated_sprite.visible = true
+
 func handle_movement(i_vec, delta):
 	var e = angle_difference(i_vec.angle(), facing.angle())
 	if not i_vec == Vector2.ZERO: # if player is running
@@ -152,6 +164,7 @@ func _render_player_helper(direction):
 
 func set_invincible(boo):
 	invincible = boo
+
 
 func handle_flashlight(delta: float) -> void:
 	
@@ -221,4 +234,5 @@ func interact_with_closest_artifacts():
 			holding_item_score = artifact.get_points()
 			item_sprite.texture = holding_item
 			soundManager.play_artifact_sound()
+			picked_up_artifact.emit()
 			break
