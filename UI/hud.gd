@@ -119,6 +119,3 @@ func update_objective(objective):
 
 func set_waypoint(pos : Vector2) -> void:
 	portal_waypoint_target = pos
-
-func _on_player_interactable_in_range_changed(is_available: bool) -> void:
-	$E_Indicator.visible = is_available

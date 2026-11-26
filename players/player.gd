@@ -4,10 +4,10 @@ extends CharacterBody2D
 signal score_earned(amount)
 signal exit_point_reached()
 signal spotted(observer, target)
-signal interactable_in_range_changed(is_available: bool)
 signal picked_up_artifact()
 
 const PIXELS_PER_METRE = 100
+const INTERACTION_INDICATOR_OFFSET := Vector2(0, -160)
 
 @onready var speed = get_meta("speed")
 @onready var mass = get_meta("Mass")
@@ -59,7 +59,7 @@ var angular_velocity = 0
 var angular_acceleration = 0
 
 var interactables: Array[Node2D] = []
-var interaction_available := false
+var current_interactable: Node2D
 
 func gameoverbruh():
 	gameoverseq = true
@@ -86,6 +86,7 @@ func _process(_delta: float) -> void:
 	$FlashLight.rotation = facing.angle()
 	$Cone.rotation = facing.angle()
 	render_player(i_vec)
+	_update_interaction_indicator()
 
 func _physics_process(delta: float) -> void:
 	interactables = interactables_in_range()
@@ -99,14 +100,7 @@ func _physics_process(delta: float) -> void:
 			on_exit_point_reached()
 
 	move_and_slide()
-	#
-	#if self is not PastPlayer:
-		#_set_interaction_availability(not interactables.is_empty())
-			#
-		#if artifacts.size() > 0 and not holding_item:
-			#proximal_to_artifact.emit(true)
-		#else:
-			#proximal_to_artifact.emit(false)
+	_update_current_interactable()
 
 func animate_invicibility() -> void:
 	var time_elapsed_1 : = get_tree().create_timer(1.5)
@@ -195,6 +189,7 @@ func start(pos: Vector2):
 	position = pos
 	holding_item = null
 	item_sprite.texture = null
+	current_interactable = null
 	show()
 	#for ray in $Cone.get_children():
 		#ray.add_exception($"../raysbs")
@@ -235,7 +230,8 @@ func interact_with_closest_interactable() -> void:
 	for interactable in interactables:
 		if interactable.interact(self):
 			interactables = interactables_in_range()
-			_set_interaction_availability(not interactables.is_empty())
+			_update_current_interactable()
+			_update_interaction_indicator()
 			break
 
 func receive_artifact(artifact: Artifact) -> void:
@@ -245,8 +241,18 @@ func receive_artifact(artifact: Artifact) -> void:
 	soundManager.play_artifact_sound()
 	picked_up_artifact.emit()
 
-func _set_interaction_availability(is_available: bool) -> void:
-	if interaction_available == is_available:
+func _update_current_interactable() -> void:
+	if interactables.is_empty():
+		current_interactable = null
 		return
-	interaction_available = is_available
-	interactable_in_range_changed.emit(is_available)
+	current_interactable = interactables[0]
+
+func _update_interaction_indicator() -> void:
+	var indicator := get_node_or_null("InteractionIndicator") as Sprite2D
+	if not indicator:
+		return
+	if not is_instance_valid(current_interactable):
+		indicator.hide()
+		return
+	indicator.global_position = current_interactable.global_position + INTERACTION_INDICATOR_OFFSET
+	indicator.show()

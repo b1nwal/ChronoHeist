@@ -2065,4 +2065,3 @@ position = Vector2(-2176, -1944)
 [connection signal="picked_up_artifact" from="Player" to="." method="_on_player_picked_up_artifact"]
 [connection signal="score_earned" from="Player" to="." method="_on_score_added"]
 [connection signal="spotted" from="Player" to="." method="_on_spotted"]
-[connection signal="interactable_in_range_changed" from="Player" to="HUD" method="_on_player_interactable_in_range_changed"]
