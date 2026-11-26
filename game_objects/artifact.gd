@@ -8,7 +8,7 @@ extends Node2D
 @export var artifact_texture : CompressedTexture2D
 @export var mini_artifact_texture : CompressedTexture2D
 @export var points : int
-var is_collected : bool = false 
+var is_collected : bool = true 
 var point_value : int 
 
 # Initialize stand textures

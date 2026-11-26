@@ -473,7 +473,7 @@ sprite_frames = SubResource("SpriteFrames_x7o8n")
 
 [node name="InteractionIndicator" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(1, 1, 1, 0.55)
+modulate = Color(1, 1, 1, 0.85)
 top_level = true
 z_index = 20
 scale = Vector2(2, 2)
