@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal score_earned(amount)
 signal exit_point_reached()
 signal spotted(observer, target)
-signal proximal_to_artifact(truth)
+signal interactable_in_range_changed(is_available: bool)
 signal picked_up_artifact()
 
 const PIXELS_PER_METRE = 100
@@ -58,7 +58,8 @@ var f_A = .07
 var angular_velocity = 0
 var angular_acceleration = 0
 
-var artifacts = []
+var interactables: Array[Node2D] = []
+var interaction_available := false
 
 func gameoverbruh():
 	gameoverseq = true
@@ -73,8 +74,7 @@ func _unhandled_input(event):
 		flash.tryactivate()
 		
 	if event.is_action_pressed("interact"):
-		if !holding_item:
-			interact_with_closest_artifacts()
+		interact_with_closest_interactable()
 			
 
 func _obtain_v_vec():
@@ -88,7 +88,7 @@ func _process(_delta: float) -> void:
 	render_player(i_vec)
 
 func _physics_process(delta: float) -> void:
-	artifacts = artifact_inrange()
+	interactables = interactables_in_range()
 	i_vec = _obtain_v_vec()[0]
 	position = _obtain_v_vec()[1]
 	handle_movement(i_vec, delta)
@@ -101,10 +101,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if self is not PastPlayer:
-		if artifacts.size() > 0 and not holding_item:
-			proximal_to_artifact.emit(true)
-		else:
-			proximal_to_artifact.emit(false)
+		_set_interaction_availability(not interactables.is_empty())
 			
 func handle_movement(i_vec, delta):
 	var e = angle_difference(i_vec.angle(), facing.angle())
@@ -155,7 +152,6 @@ func set_invincible(boo):
 	invincible = boo
 
 func handle_flashlight(delta: float) -> void:
-	
 	if gameoverseq == false and invincible == false:
 		var target = null
 		for ray in $Cone.get_children():
@@ -191,7 +187,6 @@ func set_exit_point(point):
 	exit_point = point
 	
 func on_exit_point_reached():
-	
 	if holding_item:
 		score_earned.emit(holding_item_score)
 		holding_item_score = 0
@@ -200,27 +195,41 @@ func on_exit_point_reached():
 	
 	exit_point_reached.emit()
 
-func artifact_inrange() -> Array[Node2D]:
-	var nodes_in_range: Array[Node2D] = interaction_range.get_overlapping_bodies()
-	var artifacts: Array[Node2D] = []
+func interactables_in_range() -> Array[Node2D]:
+	var nearby_interactables: Array[Node2D] = []
 	for body in interaction_range.get_overlapping_bodies():
-		var parent = body.get_parent()
-		if parent is Artifact:
-			artifacts.append(parent)
-	# sort by proximity!
-	artifacts.sort_custom(func(a,b):
+		var interactable := _find_interactable_ancestor(body)
+		if interactable and not nearby_interactables.has(interactable) and interactable.can_interact(self):
+			nearby_interactables.append(interactable)
+	nearby_interactables.sort_custom(func(a,b):
 		return global_position.distance_squared_to(a.global_position) < global_position.distance_squared_to(b.global_position)
 	)
-	return artifacts
+	return nearby_interactables
 
-# interact with all the closest artifacts
-func interact_with_closest_artifacts():
-	# try interacting with all the artifacts in range in order of distance
-	for artifact in artifacts:
-		if artifact.interact():
-			holding_item = artifact.get_mini_artifact()
-			holding_item_score = artifact.get_points()
-			item_sprite.texture = holding_item
-			soundManager.play_artifact_sound()
-			picked_up_artifact.emit()
+func _find_interactable_ancestor(node: Node) -> Node2D:
+	var current: Node = node
+	while current:
+		if current is Node2D and current.is_in_group("interactable"):
+			return current
+		current = current.get_parent()
+	return null
+
+func interact_with_closest_interactable() -> void:
+	for interactable in interactables:
+		if interactable.interact(self):
+			interactables = interactables_in_range()
+			_set_interaction_availability(not interactables.is_empty())
 			break
+
+func receive_artifact(artifact: Artifact) -> void:
+	holding_item = artifact.get_mini_artifact()
+	holding_item_score = artifact.get_points()
+	item_sprite.texture = holding_item
+	soundManager.play_artifact_sound()
+	picked_up_artifact.emit()
+
+func _set_interaction_availability(is_available: bool) -> void:
+	if interaction_available == is_available:
+		return
+	interaction_available = is_available
+	interactable_in_range_changed.emit(is_available)

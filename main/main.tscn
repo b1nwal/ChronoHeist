@@ -1764,4 +1764,4 @@ script = ExtResource("4_272bh")
 [connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="timeout" from="CountDown" to="." method="_on_count_down_timeout"]
 [connection signal="timeout" from="gameovertimer" to="." method="_on_gameovertimer_timeout"]
-[connection signal="proximal_to_artifact" from="player" to="HUD" method="_on_player_proximal_to_artifact"]
+[connection signal="interactable_in_range_changed" from="player" to="HUD" method="_on_player_interactable_in_range_changed"]

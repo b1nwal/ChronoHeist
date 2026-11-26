@@ -13,7 +13,7 @@ func _on_rewind() -> void:
 func set_movement(_record: Array) -> void:
 	record = _record
 
-func artifact_inrange() -> Array[Node2D]:
+func interactables_in_range() -> Array[Node2D]:
 	return [];
 
 func _obtain_v_vec():

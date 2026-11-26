@@ -163,6 +163,7 @@ text = "bruh"
 vertical_alignment = 2
 
 [node name="E_Indicator" type="TextureRect" parent="."]
+visible = false
 offset_left = 920.0
 offset_top = 608.0
 offset_right = 960.0

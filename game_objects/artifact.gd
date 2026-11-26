@@ -17,15 +17,18 @@ func _ready() -> void:
 	artifact.texture = artifact_texture
 	_start_float()
 
-# returns true if the artifact was successfully collected. returns false if you cant interact.
-func interact() -> bool:
-	if is_collected:
+func can_interact(player: Player) -> bool:
+	return not is_collected and not player.holding_item
+
+# Returns true when the artifact is successfully collected.
+func interact(player: Player) -> bool:
+	if not can_interact(player):
 		return false
-	else:
-		is_collected = true
-		#particles.restart()
-		artifact.hide()
-		return true 
+	is_collected = true
+	#particles.restart()
+	artifact.hide()
+	player.receive_artifact(self)
+	return true
 
 # returns texture of the mini version of the artifact for the player to hold
 func get_mini_artifact() -> CompressedTexture2D:
