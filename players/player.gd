@@ -103,6 +103,22 @@ func _physics_process(delta: float) -> void:
 	if self is not PastPlayer:
 		_set_interaction_availability(not interactables.is_empty())
 			
+		if artifacts.size() > 0 and not holding_item:
+			proximal_to_artifact.emit(true)
+		else:
+			proximal_to_artifact.emit(false)
+
+func animate_invicibility() -> void:
+	var time_elapsed_1 : = get_tree().create_timer(1.5)
+	while time_elapsed_1.time_left > 0:
+		await get_tree().create_timer(0.02).timeout
+		animated_sprite.visible = not animated_sprite.visible
+	var time_elapsed_2 : = get_tree().create_timer(1.5)
+	while time_elapsed_2.time_left > 0:
+		await get_tree().create_timer(0.01).timeout
+		animated_sprite.visible = not animated_sprite.visible
+	animated_sprite.visible = true
+
 func handle_movement(i_vec, delta):
 	var e = angle_difference(i_vec.angle(), facing.angle())
 	if not i_vec == Vector2.ZERO: # if player is running
@@ -150,6 +166,7 @@ func _render_player_helper(direction):
 
 func set_invincible(boo):
 	invincible = boo
+
 
 func handle_flashlight(delta: float) -> void:
 	if gameoverseq == false and invincible == false:

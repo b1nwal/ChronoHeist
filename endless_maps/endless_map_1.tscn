@@ -2050,7 +2050,7 @@ one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("6_56a1s")]
 visibility_layer = 4
-position = Vector2(2176, 1944)
+position = Vector2(1597, 1757)
 script = ExtResource("7_3xhgx")
 
 [node name="MainCamera" parent="Player" instance=ExtResource("31_ip78c")]
