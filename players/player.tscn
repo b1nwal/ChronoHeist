@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://bw4aphjyapcqh"]
+[gd_scene load_steps=87 format=3 uid="uid://bw4aphjyapcqh"]
 
 [ext_resource type="Texture2D" uid="uid://dmo3p0nl7eyp4" path="res://assets/particles/particle_effects2.png" id="1_2ggna"]
 [ext_resource type="Material" uid="uid://dfdvexhb6pcdi" path="res://players/player_material.tres" id="1_8g4q3"]
@@ -80,6 +80,7 @@
 [ext_resource type="Texture2D" uid="uid://tdtfhymhdxbl" path="res://assets/thief/holding_artifact/thief_side_right_holding_small1.png" id="48_elccj"]
 [ext_resource type="Script" uid="uid://3r1tlerdft6x" path="res://players/dash.gd" id="81_lvll6"]
 [ext_resource type="Script" uid="uid://d2ghvf2vpybrn" path="res://players/flash.gd" id="82_62rcy"]
+[ext_resource type="Texture2D" uid="uid://bhh7xq8r5o3fk" path="res://assets/hud_ui/e_button.png" id="83_indicator"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5gvhf"]
 animations = [{
@@ -469,6 +470,14 @@ material = ExtResource("1_8g4q3")
 position = Vector2(2.6226e-06, 1.43051e-06)
 scale = Vector2(2, 1.768)
 sprite_frames = SubResource("SpriteFrames_x7o8n")
+
+[node name="InteractionIndicator" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.85)
+top_level = true
+z_index = 20
+scale = Vector2(2, 2)
+texture = ExtResource("83_indicator")
 
 [node name="Cone" type="Node2D" parent="."]
 z_index = 1

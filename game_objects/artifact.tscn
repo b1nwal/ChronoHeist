@@ -37,7 +37,7 @@ color = Color(1, 1, 0.588235, 1)
 cull_mode = 1
 polygon = PackedVector2Array(64, 0, 64, -84, 0, -84, 0, 0)
 
-[node name="Artifact" type="Node2D"]
+[node name="Artifact" type="Node2D" groups=["interactable"]]
 position = Vector2(768, 576)
 script = ExtResource("1_32u3t")
 empty_stand_texture = ExtResource("2_uci8d")
