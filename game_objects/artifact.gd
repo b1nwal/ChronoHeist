@@ -8,7 +8,7 @@ extends Node2D
 @export var artifact_texture : CompressedTexture2D
 @export var mini_artifact_texture : CompressedTexture2D
 @export var points : int
-var is_collected : bool = true 
+var is_collected : bool = false 
 var point_value : int 
 
 # Initialize stand textures
@@ -16,7 +16,7 @@ func _ready() -> void:
 	stand.texture = empty_stand_texture
 	artifact.texture = artifact_texture
 	_start_float()
-
+ 	
 func can_interact(player: Player) -> bool:
 	return not is_collected and not player.holding_item
 
