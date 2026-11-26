@@ -1,4 +1,4 @@
-[gd_scene load_steps=199 format=4 uid="uid://bkx2mj2s46q5v"]
+[gd_scene load_steps=200 format=4 uid="uid://bwh81e3ht8tv0"]
 
 [ext_resource type="Script" uid="uid://bnpho2bx12yg6" path="res://story_maps/story_map_1.gd" id="1_adlde"]
 [ext_resource type="Texture2D" uid="uid://qosfyoqaho0b" path="res://assets/map_background/wall_floor_tile.png" id="2_icdb2"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://players/player.tscn" id="29_wm0vo"]
 [ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://players/player.gd" id="30_m3mdj"]
 [ext_resource type="PackedScene" uid="uid://08mvj2dn5fl4" path="res://game_objects/portal.tscn" id="31_7yyk3"]
+[ext_resource type="PackedScene" uid="uid://d0pl01us022js" path="res://UI/main_camera.tscn" id="31_icdb2"]
 [ext_resource type="PackedScene" uid="uid://ble0wamj0w0l0" path="res://UI/hud.tscn" id="32_i31ij"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wimf0"]
@@ -2052,10 +2053,15 @@ visibility_layer = 4
 position = Vector2(2176, 1944)
 script = ExtResource("30_m3mdj")
 
+[node name="MainCamera" parent="Player" instance=ExtResource("31_icdb2")]
+position = Vector2(-2176, -1944)
+
 [node name="Portal" parent="." instance=ExtResource("31_7yyk3")]
 
 [node name="HUD" parent="." instance=ExtResource("32_i31ij")]
 
+[connection signal="timeout" from="map/RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="exit_point_reached" from="Player" to="." method="_on_exit_reached"]
+[connection signal="picked_up_artifact" from="Player" to="." method="_on_player_picked_up_artifact"]
 [connection signal="score_earned" from="Player" to="." method="_on_score_added"]
 [connection signal="spotted" from="Player" to="." method="_on_spotted"]

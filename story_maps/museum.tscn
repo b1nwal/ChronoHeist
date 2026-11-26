@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://bwh81e3ht8tv0"]
+[gd_scene load_steps=73 format=4 uid="uid://hwe75gv62fnh"]
 
 [ext_resource type="Script" uid="uid://bnpho2bx12yg6" path="res://story_maps/story_map_1.gd" id="1_nk7de"]
 [ext_resource type="Texture2D" uid="uid://bepi6ltg0wa5t" path="res://assets/map_background/museum_tiles.png" id="2_66tvp"]

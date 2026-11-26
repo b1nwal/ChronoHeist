@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://08mvj2dn5fl4" path="res://game_objects/portal.tscn" id="6_qfux7"]
 [ext_resource type="PackedScene" uid="uid://3ce7imqslowc" path="res://endless_maps/endless_map_1.tscn" id="8_8367x"]
 [ext_resource type="FontFile" uid="uid://c02uvtj0ncjfu" path="res://font/gbb__.ttf" id="9_8367x"]
-[ext_resource type="PackedScene" uid="uid://bwh81e3ht8tv0" path="res://story_maps/museum.tscn" id="10_8v3m6"]
+[ext_resource type="PackedScene" uid="uid://hwe75gv62fnh" path="res://story_maps/museum.tscn" id="10_8v3m6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pkrdv"]
 
