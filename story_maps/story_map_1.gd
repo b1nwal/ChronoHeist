@@ -7,6 +7,7 @@ var playerPast_scene := preload("uid://ds72i60gi80dp")
 @onready var player := $Player
 @onready var artifact_nodes := $map/artifacts
 @onready var spawn_nodes := $map/playerspawns
+@onready var extraction_node := $map/extraction_point
 @onready var portal := $Portal
 @onready var camera : Camera2D = $Player/MainCamera
 
@@ -19,7 +20,9 @@ var player_spawn : Vector2
 var portal_position : Vector2
 var score : int
 var game_over_sequence_started : bool = false
+var extraction_open : bool = false
 var round_number : int = 0
+var artifacts_collected : int = 0
 var white_flash : ColorRect = ColorRect.new()
 
 # initializes the game at the very beginning
@@ -27,6 +30,7 @@ func _ready() -> void:
 	randomize()
 	_initialize_spawns()
 	_new_round()
+	player.set_extraction_open(false)
 
 # _process function. handles anything that requires checks over the course of the round
 func _process(delta: float) -> void:
@@ -47,14 +51,21 @@ func _new_round() -> void:
 	_set_invincibility(true)
 	await get_tree().create_timer(3).timeout
 	_set_physics_process(true)
+	_check_game_rules()
 	player.animate_invicibility()
+	player.set_extraction_point(extraction_node.position)
 	round_timer.paused = false
 
-#place spawns into array and pick a random one
+#place spawns into array and pick a random one. round 1 starts at the extraction point.
 func _initialize_spawns():
 	for spawn in spawn_nodes.get_children():
 		spawns.append(spawn)
-	player_spawn = spawns[randi_range(0, spawns.size() - 1)].position
+	player_spawn = extraction_node.position
+	
+func _check_game_rules():
+	if artifacts_collected >= 2:
+		extraction_open = true
+		player.set_extraction_open(true)
 
 # ends the game and runs the final sequence
 func _game_over():
@@ -166,9 +177,17 @@ func _on_exit_reached() -> void:
 	_remove_ghosts()
 	player_spawn = portal_position
 	_new_round()
+	
+func _on_extraction_reached() -> void:
+	_remove_ghosts()
+	_frame_killer(player)
+	extraction_open = false
+	player.set_extraction_open(false)
+	_game_over()
 
 # adds new score
 func _on_score_added(points) -> void:
+	artifacts_collected += 1
 	score += points
 	hud.update_score(score)
 

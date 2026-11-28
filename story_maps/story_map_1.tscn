@@ -2062,6 +2062,7 @@ position = Vector2(-2176, -1944)
 
 [connection signal="timeout" from="map/RoundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="exit_point_reached" from="Player" to="." method="_on_exit_reached"]
+[connection signal="extraction_point_reached" from="Player" to="." method="_on_extraction_reached"]
 [connection signal="picked_up_artifact" from="Player" to="." method="_on_player_picked_up_artifact"]
 [connection signal="score_earned" from="Player" to="." method="_on_score_added"]
 [connection signal="spotted" from="Player" to="." method="_on_spotted"]

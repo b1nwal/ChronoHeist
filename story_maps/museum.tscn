@@ -1,10 +1,11 @@
-[gd_scene load_steps=73 format=4 uid="uid://hwe75gv62fnh"]
+[gd_scene load_steps=74 format=4 uid="uid://hwe75gv62fnh"]
 
 [ext_resource type="Script" uid="uid://bnpho2bx12yg6" path="res://story_maps/story_map_1.gd" id="1_nk7de"]
 [ext_resource type="Texture2D" uid="uid://bepi6ltg0wa5t" path="res://assets/map_background/museum_tiles.png" id="2_66tvp"]
 [ext_resource type="Texture2D" uid="uid://b35eeeqh6pcs8" path="res://assets/map_background/map_layout_bg.png" id="7_wsqu0"]
 [ext_resource type="PackedScene" uid="uid://bgn2qmn7p2qxf" path="res://game_objects/artifact.tscn" id="8_vj008"]
 [ext_resource type="Texture2D" uid="uid://ynmdl660aoe7" path="res://assets/artifacts/artifact_item_chisato.png" id="9_8yj07"]
+[ext_resource type="Script" uid="uid://ciwpvo3i3t3w0" path="res://UI/main_camera.gd" id="9_m5cqm"]
 [ext_resource type="Texture2D" uid="uid://d0hewekeskysu" path="res://assets/artifacts/artifact_item_chisato_small.png" id="10_ceca3"]
 [ext_resource type="PackedScene" uid="uid://bw4aphjyapcqh" path="res://players/player.tscn" id="29_v4yan"]
 [ext_resource type="Script" uid="uid://dn1d50r54uxxv" path="res://players/player.gd" id="30_5jojn"]
@@ -619,19 +620,34 @@ position = Vector2(1495.99, 1408)
 scale = Vector2(2.24467, 2.20455)
 texture = ExtResource("7_wsqu0")
 
+[node name="extraction_point" type="Marker2D" parent="map"]
+position = Vector2(609, 2911)
+
 [node name="playerspawns" type="Node2D" parent="map"]
 
 [node name="playerspawn2" type="Marker2D" parent="map/playerspawns"]
-position = Vector2(280, 2167)
+position = Vector2(169, 1242)
 
 [node name="playerspawn" type="Marker2D" parent="map/playerspawns"]
-position = Vector2(2390, 2230)
+position = Vector2(1081, 1222)
 
 [node name="artifacts" type="Node2D" parent="map"]
 position = Vector2(0, 1)
 
+[node name="Artifact3" parent="map/artifacts" instance=ExtResource("8_vj008")]
+position = Vector2(985, 967)
+artifact_texture = ExtResource("9_8yj07")
+mini_artifact_texture = ExtResource("10_ceca3")
+points = 100
+
+[node name="Artifact2" parent="map/artifacts" instance=ExtResource("8_vj008")]
+position = Vector2(705, 957)
+artifact_texture = ExtResource("9_8yj07")
+mini_artifact_texture = ExtResource("10_ceca3")
+points = 100
+
 [node name="Artifact" parent="map/artifacts" instance=ExtResource("8_vj008")]
-position = Vector2(784, 1088)
+position = Vector2(421, 950)
 artifact_texture = ExtResource("9_8yj07")
 mini_artifact_texture = ExtResource("10_ceca3")
 points = 100
@@ -645,13 +661,17 @@ one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("29_v4yan")]
 visibility_layer = 4
-position = Vector2(2176, 1944)
+position = Vector2(238, -83)
 script = ExtResource("30_5jojn")
+
+[node name="MainCamera" type="Camera2D" parent="Player"]
+script = ExtResource("9_m5cqm")
 
 [node name="Portal" parent="." instance=ExtResource("31_0dqsq")]
 
 [node name="HUD" parent="." instance=ExtResource("32_rdqbw")]
 
 [connection signal="exit_point_reached" from="Player" to="." method="_on_exit_reached"]
+[connection signal="extraction_point_reached" from="Player" to="." method="_on_extraction_reached"]
 [connection signal="score_earned" from="Player" to="." method="_on_score_added"]
 [connection signal="spotted" from="Player" to="." method="_on_spotted"]

@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal score_earned(amount)
 signal exit_point_reached()
+signal extraction_point_reached()
 signal spotted(observer, target)
 signal picked_up_artifact()
 
@@ -21,6 +22,7 @@ const INTERACTION_INDICATOR_OFFSET := Vector2(0, -160)
 
 ## GAME STATES
 var gameoverseq := false
+var extraction_open := false
 
 ## PLAYER STATES
 var holding_item = null
@@ -34,6 +36,8 @@ var facing_direction = "forward"
 var run_start
 var stop_start
 var exit_point
+var extraction_point
+
 
 ## SPOTTING
 const spot_time := 0.05
@@ -94,10 +98,17 @@ func _physics_process(delta: float) -> void:
 	position = _obtain_v_vec()[1]
 	handle_movement(i_vec, delta)
 	handle_flashlight(delta)
+	
 	# check if distance to exit is < 64 px
 	if exit_point:
 		if global_position.distance_squared_to(exit_point) < 4096:
 			on_exit_point_reached()
+			exit_point_reached.emit()
+			
+	if extraction_point && extraction_open:
+		if global_position.distance_squared_to(extraction_point) < 4096:
+			on_exit_point_reached()
+			extraction_point_reached.emit()
 
 	move_and_slide()
 	_update_current_interactable()
@@ -198,14 +209,20 @@ func start(pos: Vector2):
 func set_exit_point(point):
 	exit_point = point
 	
+func set_extraction_point(point):
+	extraction_point = point
+	
+func set_extraction_open(boo):
+	extraction_open = boo
+	
 func on_exit_point_reached():
+	
 	if holding_item:
 		score_earned.emit(holding_item_score)
 		holding_item_score = 0
 		holding_item = null
 		particles.emitting = false
-	
-	exit_point_reached.emit()
+
 
 func interactables_in_range() -> Array[Node2D]:
 	var nearby_interactables: Array[Node2D] = []
